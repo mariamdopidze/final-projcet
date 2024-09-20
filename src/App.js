@@ -1,13 +1,11 @@
 import './App.css';
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
-import About from "./pages/About";
 import { Routes, Route } from 'react-router-dom';
-import Counter from './pages/Counter';
+import Header from './components/Header';
 import { store } from './store/store';
 import { Provider } from 'react-redux';
 import User from './components/User';
+import Discount from './components/Discount'
+
 
 
 
@@ -16,14 +14,12 @@ function App() {
   return (
     <Provider store={store}>
     <div>
-      
+      <Discount/>
       <Header/>
+
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/counter' element={<Counter />} />
-        <Route path='/input' element={<User/>} />
+       
+        
       </Routes>
       
        
