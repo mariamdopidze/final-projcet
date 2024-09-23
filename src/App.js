@@ -5,7 +5,7 @@ import { store } from './store/store';
 import { Provider } from 'react-redux';
 import User from './components/User';
 import Discount from './components/Discount'
-import Main from './components/Main';
+import Main from './pages/Main';
 
 
 
