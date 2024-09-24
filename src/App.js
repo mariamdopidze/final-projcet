@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import User from './components/User';
 import Discount from './components/Discount'
 import Main from './pages/Main';
+import Footer from './components/Footer'
 
 
 
@@ -18,6 +19,7 @@ function App() {
       <Discount/>
       <Header/>
       <Main/>
+      <Footer/>
 
       <Routes>
        

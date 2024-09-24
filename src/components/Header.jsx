@@ -5,7 +5,7 @@ const Header = () => (
     <div className="flex items-center gap-2 ">
       <img src="/images/Logomark.png" alt="Logo" />
       <a href="/">
-        <h3 className="text-2xl text-gray-600">Ecommerce</h3>
+        <h3 className="text-2xl text-gray-600 font-extrabold size-5">Ecommerce</h3>
       </a>
     </div>
 

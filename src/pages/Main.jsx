@@ -3,16 +3,16 @@ import React from "react";
 const Main = () => {
   return (
     <div>
-      <div className="bg-gray-100 py-36">
+      <div className="bg-gray-100  py-36">
         <div className="flex items-center mx-auto max-w-[1116px]">
           <div className="lg:w-1/2">
-            <h2 className="text-2xl font-bold tracking-tight text-black">
+            <h2 className="text-2xl h-6 tracking-tight font-semibold text-black mb-6">
               Fresh Arrivals Online
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-800">
+            <p className="text-lg leading-8 text-gray-800 h-8 mb-10">
               Discover Our Newest Collection Today.
             </p>
-            <button className="bg-black text-white rounded px-4 py-2 flex items-center">
+            <button className="bg-black text-white rounded px-4 py-2 flex items-center h-[44px] top-[260px] left-[182px] p-[12px_24px] gap-[6px]">
               View Collection
               <img src="/images/arrow.png" className="ml-2 mt-1" alt="arrow" />
             </button>
@@ -62,7 +62,7 @@ const Main = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center h-full">
-        <span>shop now</span>
+        <p>shop now</p>
         <h4>Best Selling</h4>
       </div>
 
@@ -111,7 +111,6 @@ const Main = () => {
       <div className="bg-gray-200">
         <div className="mx-auto max-w-[1116px]">
           <div className="flex justify-between items-center">
-
             <div>
               <h2>Browse Our Fashion Paradise!</h2>
               <p>
@@ -121,9 +120,66 @@ const Main = () => {
               <button>Start Browsing</button>
             </div>
 
-            <img src="/images/category_image.png" className="w-[200px]" alt="image" />
-
+            <img
+              src="/images/category_image.png"
+              className="w-[200px]"
+              alt="image"
+            />
           </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center justify-center h-full">
+        <p>shop now</p>
+        <h4>Best Selling</h4>
+      </div>
+
+      <div>
+        <div class="grid grid-rows-1 grid-flow-col gap-4 max-w-[1116px] mx-auto">
+          <div>
+            <div className="w-60 h-80 bg-gray-200 rounded">
+              <img src="/images/t-shirt-1.png" />
+            </div>
+            <div>
+              <p>Classic Monochrome Tees</p>
+              <button className="bg-blue-100">IN STOCK</button>
+              <div>$35.00</div>
+            </div>
+          </div>
+          <div>
+            <div className="w-60 h-80 bg-gray-200 rounded">
+              <img src="/images/t-shirt-2.png" />
+            </div>
+            <div>
+              <p>Classic Monochrome Tees</p>
+              <button className="bg-blue-100">IN STOCK</button>
+              <div>$35.00</div>
+            </div>
+          </div>
+
+          <div>
+            <div className="w-60 h-80 bg-gray-200 rounded">
+              <img src="/images/t-shirt-3.png" />
+            </div>
+            <p>Classic Monochrome Tees</p>
+            <button className="bg-blue-100">IN STOCK</button>
+            <div>$35.00</div>
+          </div>
+
+          <div>
+            <div className="w-60 h-80 bg-gray-200 rounded">
+              <img src="/images/t-shirt-4.png" />
+            </div>
+            <p>Classic Monochrome Tees</p>
+            <button className="bg-blue-100">IN STOCK</button>
+            <div>$35.00</div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-gray-200 ">
+        <div className="mx-auto max-w-[1116px] h-50">
+          <h3>Join Our Newsletter</h3>
+          <p>We love to surprise our subscribers with occasional gifts.</p>
         </div>
       </div>
     </div>
