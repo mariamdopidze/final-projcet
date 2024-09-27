@@ -5,22 +5,24 @@ const Header = () => (
     <div className="flex items-center gap-2 ">
       <img src="/images/Logomark.png" alt="Logo" />
       <a href="/">
-        <h3 className="text-2xl text-gray-600 font-extrabold size-5">Ecommerce</h3>
+        <h3 className="text-xl  font-extrabold  size-5">
+          Ecommerce
+        </h3>
       </a>
     </div>
 
     <div className="sm:ml-6 sm:block">
       <div className="flex  items-center space-x-4">
-        <a href="#" className=" px-3 py-2 text-sm font-medium text-black-300 ">
+        <a href="#" className=" px-3 py-2 text-sm font-medium  ">
           Home
         </a>
-        <a href="#" className=" px-3 py-2 text-sm font-medium text-black-300 ">
+        <a href="#" className=" px-3 py-2 text-sm font-medium  ">
           Categories
         </a>
-        <a href="#" className=" px-3 py-2 text-sm font-medium text-black-300 ">
+        <a href="#" className=" px-3 py-2 text-sm font-medium ">
           About
         </a>
-        <a href="#" className=" px-3 py-2 text-sm font-medium text-black-300 ">
+        <a href="#" className=" px-3 py-2 text-sm font-medium  ">
           Contact
         </a>
       </div>
@@ -31,7 +33,7 @@ const Header = () => (
       <input
         type="text"
         placeholder="Search product"
-        className="p-2 border-none outline-none"
+        className="p-2 border-none outline-none font-medium text-sm"
       />
     </div>
 
