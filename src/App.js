@@ -7,17 +7,19 @@ import User from "./components/User";
 import Discount from "./components/Discount";
 import Main from "./pages/Main";
 import Footer from "./components/Footer";
+import ProductList from "./pages/ProductList";
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 function App() {
   return (
     <Provider store={store}>
       <div>
-        <Discount />
-        <Header />
-        <Main />
-        <Footer />
+       
+       <Routes>
+          <Route path="/product" element={<ProductList/>}/>
+          <Route path="/" element={<Main/>}/>
 
-        <Routes></Routes>
+        </Routes>
       </div>
     </Provider>
   );

@@ -1,4 +1,7 @@
 import React from "react";
+import Discount from "../components/Discount";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Main = () => {
   const products = [
@@ -57,6 +60,8 @@ const Main = () => {
 
   return (
     <div>
+       <Discount />
+       <Header />
       <div className="bg-neutral-100  py-18">
         <div className="flex items-center mx-auto max-w-[1116px]">
           <div className="lg:w-1/2">
@@ -118,8 +123,8 @@ const Main = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center h-full mt-20">
-        <p className="font-medium text-xs m-2">shop now</p>
-        <h4 className="font-bold text-base">Best Selling</h4>
+        <p className="font-medium text-xs ">shop now</p>
+        <h4 className="font-bold text-base mt-2">Best Selling</h4>
       </div>
 
 
@@ -232,6 +237,7 @@ const Main = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
