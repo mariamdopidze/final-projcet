@@ -9,6 +9,7 @@ import Main from "./pages/Main";
 import Footer from "./components/Footer";
 import ProductList from "./pages/ProductList";
 import { Swiper, SwiperSlide } from 'swiper/react'
+import Listing from "./pages/Listing";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
        <Routes>
           <Route path="/product" element={<ProductList/>}/>
           <Route path="/" element={<Main/>}/>
+          <Route path="/listing" element={<Listing/>}/>
 
         </Routes>
       </div>

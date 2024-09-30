@@ -214,29 +214,7 @@ const Main = () => {
         </div>
       </div>
       
-      <div className="bg-neutral-100 py-20 h-60 mt-48">
-        <div className="mx-auto max-w-[1116px]">
-          <div className="flex justify-between justify-items-center h-52">
-            <div>
-              <h3 className="font-bold text-base">Join Our Newsletter</h3>
-              <p className="font-normal text-sm mt-6">
-                We love to surprise our subscribers with occasional gifts.
-              </p>
-            </div>
-
-            <div className="flex gap-4  ">
-              <input
-                type="emial"
-                placeholder="Your email address"
-                className="p-2 border rounded-md outline-none w-80 h-11 font-medium text-sm"
-              />
-              <button className="w-28 h-11 bg-black text-white rounded font-medium text-sm">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      
       <Footer/>
     </div>
   );
