@@ -140,9 +140,9 @@ const Listing = () => {
 
             <h6 className="mt-11 ml-4 font-medium text-sm">Color</h6>
 
-            <div className="flex flex-wrap mt-3 ml-[17.5px]">
+            <div className="flex flex-wrap mt-3 ml-[17.5px] gap-4">
               {radios.map((radio) => (
-                <div key={radio.id} className="flex items-center me-4">
+                <div key={radio.id} className="flex items-center ">
                   <input
                     id={radio.id}
                     type="radio"
