@@ -1,8 +1,16 @@
-import React from "react";
 import Discount from "../components/Discount";
 import Header from "../components/Header";
-import { useState } from "react";
 import Footer from "../components/Footer";
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import required modules
+import { Pagination } from "swiper/modules";
 
 const ProductList = () => {
   const [quantity, setQuantity] = useState(1);
@@ -56,10 +64,20 @@ const ProductList = () => {
         <div className="bg-white rounded mx-auto max-w-[1116px] mt-4">
           <div className="flex justify-between">
             <div className="w-[534px] h-[574px] bg-neutral-100">
-              <img
-                src="/images/t-shirt-4.png"
-                className="mx-auto pt-20 w-[288px] h-[404px]"
-              />
+              <Swiper pagination={true} modules={[Pagination]}>
+                <SwiperSlide>
+                  <img
+                    src="/images/t-shirt-4.png"
+                    className="mx-auto pt-20 w-[288px] h-[404px]"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img
+                    src="/images/t-shirt-4.png"
+                    className="mx-auto pt-20 w-[288px] h-[404px]"
+                  />
+                </SwiperSlide>
+              </Swiper>
             </div>
             <div className="flex flex-col items-start mr-30 w-[438px] h-[562px] ">
               <div className="flex items-center">
@@ -190,7 +208,7 @@ const ProductList = () => {
                       for="size-s"
                       class="w-10 h-10 flex items-center justify-center text-black bg-gray-100 border-gray-300 rounded cursor-pointer"
                     >
-                      2XL
+                      XXL
                     </label>
                   </div>
                 </div>
