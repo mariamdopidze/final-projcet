@@ -14,6 +14,7 @@ import Cart from "./pages/Cart"
 import Checkout from "./pages/Checkout";
 import Successful from "./pages/Successful";
 import Failedorder from "./pages/Failedorder";
+import Login from "./pages/Login";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/checkout" element={<Checkout/>}/>
           <Route path="/successful" element={<Successful/>}/>
           <Route path="/failedorder" element={<Failedorder/>}/>
+          <Route path="/login" element={<Login/>}/>
          
 
         </Routes>
