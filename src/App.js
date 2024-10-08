@@ -13,6 +13,7 @@ import Listing from "./pages/Listing";
 import Cart from "./pages/Cart"
 import Checkout from "./pages/Checkout";
 import Successful from "./pages/Successful";
+import Failedorder from "./pages/Failedorder";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/checkout" element={<Checkout/>}/>
           <Route path="/successful" element={<Successful/>}/>
+          <Route path="/failedorder" element={<Failedorder/>}/>
          
 
         </Routes>
