@@ -19,6 +19,8 @@ import Signup from "./pages/Signup";
 import Password from "./pages/Password";
 import Resetpassword from "./pages/Resetpassword";
 import Order from "./pages/Order";
+import Wishlist from "./pages/Wishlist";
+
 
 
 
@@ -40,6 +42,7 @@ function App() {
           <Route path="/password" element={<Password/>}/>
           <Route path="/reset" element={<Resetpassword/>}/>
           <Route path="/order" element={<Order/>}/>
+          <Route path="/wishlist" element={<Wishlist/>}/>
          
 
         </Routes>
