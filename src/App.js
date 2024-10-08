@@ -12,6 +12,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import Listing from "./pages/Listing";
 import Cart from "./pages/Cart"
 import Checkout from "./pages/Checkout";
+import Successful from "./pages/Successful";
+
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/listing" element={<Listing/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/checkout" element={<Checkout/>}/>
+          <Route path="/successful" element={<Successful/>}/>
+         
 
         </Routes>
       </div>
