@@ -17,6 +17,7 @@ import Failedorder from "./pages/Failedorder";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Password from "./pages/Password";
+import Resetpassword from "./pages/Resetpassword";
 
 
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/password" element={<Password/>}/>
+          <Route path="/reset" element={<Resetpassword/>}/>
          
 
         </Routes>
@@ -43,5 +45,6 @@ function App() {
     </Provider>
   );
 }
+
 
 export default App;
