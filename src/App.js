@@ -18,6 +18,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Password from "./pages/Password";
 import Resetpassword from "./pages/Resetpassword";
+import Order from "./pages/Order";
 
 
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/password" element={<Password/>}/>
           <Route path="/reset" element={<Resetpassword/>}/>
+          <Route path="/order" element={<Order/>}/>
          
 
         </Routes>
