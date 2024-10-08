@@ -16,6 +16,7 @@ import Successful from "./pages/Successful";
 import Failedorder from "./pages/Failedorder";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Password from "./pages/Password";
 
 
 
@@ -34,6 +35,7 @@ function App() {
           <Route path="/failedorder" element={<Failedorder/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
+          <Route path="/password" element={<Password/>}/>
          
 
         </Routes>
