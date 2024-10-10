@@ -23,6 +23,7 @@ import Wishlist from "./pages/Wishlist";
 import Shipping from "./pages/Shipping";
 import Account from "./pages/Account";
 import Changepassword from "./pages/Changepassword";
+import Emptystate from "./pages/Emptystate";
 
 
 
@@ -49,6 +50,7 @@ function App() {
           <Route path="/shipping" element={<Shipping/>}/>
           <Route path="/account" element={<Account/>}/>
           <Route path="/changepassword" element={<Changepassword/>}/>
+          <Route path="/empty" element={<Emptystate/>}/>
          
 
         </Routes>
