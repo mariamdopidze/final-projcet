@@ -24,6 +24,7 @@ import Shipping from "./pages/Shipping";
 import Account from "./pages/Account";
 import Changepassword from "./pages/Changepassword";
 import Emptystate from "./pages/Emptystate";
+import Loginpage from "./pages/Loginpage";
 
 
 
@@ -51,6 +52,7 @@ function App() {
           <Route path="/account" element={<Account/>}/>
           <Route path="/changepassword" element={<Changepassword/>}/>
           <Route path="/empty" element={<Emptystate/>}/>
+          <Route path="/loginpage" element={<Loginpage/>}/>
          
 
         </Routes>
