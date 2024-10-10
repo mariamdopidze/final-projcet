@@ -3,7 +3,7 @@ import Discount from "../components/Discount";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-const Account = () => {
+const Changepassword = () => {
   const menu = [
     {
       icon: "Cart.png",
@@ -63,36 +63,33 @@ const Account = () => {
           <hr className="w-[1px] h-[504px] bg-[#E6E7E8] mt-[60px] ml-[36px]" />
 
           <div className="mt-[64px] ml-[48px] font-semibold text-base">
-            <span className="font-semibold text-base">Shipping Address</span>
-            <div className="w-[48px] h-[48px] rounded-full bg-[#F0F1FF] mt-[40px] flex items-center justify-center">
-              <span className="text-center font-normal text-sm text-[#4078FF]">AN</span>
-            </div>
+            <span className="font-semibold text-base">Change Password</span>
 
             <form>
               <div>
                 <label
                   for="last_name"
-                  class="block mb-2 text-sm  mt-[32px] font-medium text-gray-900 dark:text-white"
+                  class="block mb-2 text-sm  mt-[48px] font-medium text-gray-900 dark:text-white"
                 >
-                  Full name
+                  New Password
                 </label>
                 <input
                   type="text"
-                  id="Full name"
+                  id="New Password"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[259px] h-[44px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
               </div>
               <div>
                 <label
-                  for="Email"
+                  for="password"
                   class="block mb-2  mt-[16px] text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  City
+                  Confirm Password
                 </label>
                 <input
-                  type="email"
-                  id="Email"
+                  type="password"
+                  id="Confirm Password"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[259px] h-[44px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
@@ -100,9 +97,9 @@ const Account = () => {
 
               <button
                 type=""
-                class="text-white bg-[#0E1422] mt-[64px]  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-[144px] h-[44px]  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                class="text-white bg-[#0E1422] mt-[64px]  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-[169px] h-[44px]  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                Save Changes
+                Change password
               </button>
             </form>
           </div>
@@ -113,4 +110,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default Changepassword;

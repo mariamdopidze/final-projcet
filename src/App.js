@@ -22,6 +22,7 @@ import Order from "./pages/Order";
 import Wishlist from "./pages/Wishlist";
 import Shipping from "./pages/Shipping";
 import Account from "./pages/Account";
+import Changepassword from "./pages/Changepassword";
 
 
 
@@ -47,6 +48,7 @@ function App() {
           <Route path="/wishlist" element={<Wishlist/>}/>
           <Route path="/shipping" element={<Shipping/>}/>
           <Route path="/account" element={<Account/>}/>
+          <Route path="/changepassword" element={<Changepassword/>}/>
          
 
         </Routes>
