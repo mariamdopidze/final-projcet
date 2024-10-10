@@ -64,7 +64,7 @@ const Shipping = () => {
           <hr className="w-[1px] h-[504px] bg-[#E6E7E8] mt-[60px] ml-[36px]" />
 
           <div className="mt-[64px] ml-[48px] font-semibold text-base">
-            Shipping Address
+           <span>Shipping Address</span> 
             <form>
               <div class="grid gap-6 mb-6 mt-[40px]  md:grid-cols-2">
                 <div className="md:col-span-2">
