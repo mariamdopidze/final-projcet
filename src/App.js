@@ -25,7 +25,7 @@ import Account from "./pages/Account";
 import Changepassword from "./pages/Changepassword";
 import Emptystate from "./pages/Emptystate";
 import Loginpage from "./pages/Loginpage";
-
+import Dashboard from "./pages/Dashboard";
 
 
 
@@ -53,6 +53,7 @@ function App() {
           <Route path="/changepassword" element={<Changepassword/>}/>
           <Route path="/empty" element={<Emptystate/>}/>
           <Route path="/loginpage" element={<Loginpage/>}/>
+          <Route path="/dashboard" element={<Dashboard/>}/>
          
 
         </Routes>
