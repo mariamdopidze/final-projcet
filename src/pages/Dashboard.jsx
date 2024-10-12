@@ -28,11 +28,68 @@ const Dashboard = () => {
     },
   ];
 
+  const box = [
+    {
+      title: "Total Sales",
+      text: "THIS MONTH",
+      price: "$ 4,235",
+      img: "Vector8.png",
+    },
+    {
+      title: "Total Sales",
+      text: "THIS MONTH",
+      price: "$ 4,235",
+      img: "Chart.png",
+    },
+
+    {
+      title: "Total Sales",
+      text: "THIS MONTH",
+      price: "$ 4,235",
+      img: "Progress.png",
+    },
+  ];
+
+  const table = [
+    {
+      text: "Mens Black T-Shirts",
+      data: "20 Mar, 2023",
+      price: "$75.00",
+      status: "Processing",
+    },
+
+    {
+      text: "Essential Neutrals",
+      data: "19 Mar, 2023",
+      price: "$22.00",
+      status: "Processing",
+    },
+
+    {
+      text: "Sleek and Cozy Black",
+      data: "7 Feb, 2023",
+      price: "$57.00",
+      status: "Completed",
+    },
+    {
+      text: "MOCKUP Black",
+      data: "29 Jan, 2023",
+      price: "$30.00",
+      status: "Completed",
+    },
+    {
+      text: "Monochromatic Wardrobe",
+      data: "E27 Jan, 2023",
+      price: "$22.00",
+      status: "Completed",
+    },
+  ];
+
   return (
     <div>
       <div className="flex">
         <div className="border w-[260px] h-[925px] border-[#E9E9EB] p-8">
-          <div className="flex gap-[12px]">
+          <div className="flex gap-[12px] ">
             <img
               src="/images/logo2.png"
               alt="img"
@@ -43,17 +100,17 @@ const Dashboard = () => {
 
           <div className="flex flex-col justify-start mt-8">
             {menu.map((item, key) => (
-              <button
+              <a href =""
                 key={key}
                 className="block my-4 w-full hover:bg-[#F6F6F6] rounded-lg transition-all duration-300 text-start px-3"
               >
                 <img
                   src={`/images/${item.icon}`}
-                  className="inline py-3"
+                  className="inline py-2"
                   alt="img"
                 />
-                <span className="ml-2">{item.title}</span>
-              </button>
+                <span className="ml-2 font-medium text-sm text-[#5C5F6A]">{item.title}</span>
+                </a>
             ))}
             <hr className="w-[260px] border-[#E9E9EB] h-[1px] mt-[46px]" />
             <button className="w-[212px] h-[41px] mt-[32px] rounded-[8px] flex items-center justify-center space-x-2">
@@ -67,8 +124,8 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="flex-1">
-          <header className="max-w-[1180px] mx-auto  border-[#E9E9EB] p-8">
+        <div className="flex-1 ">
+          <header className="max-w-[1060px] mx-auto  border-[#E9E9EB] p-8">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <span className="text-sm font-medium">Admin</span>
@@ -82,7 +139,69 @@ const Dashboard = () => {
             </div>
           </header>
 
-          <div className="p-4"></div>
+          <div class="grid grid-cols-3 gap-[38px] mt-[56px] max-w-[1060px]  mx-auto">
+            {box.map((item, key) => (
+              <div
+                key={key}
+                className="block my-4 w-[328px] h-[187px] bg-[#F6F6F6] rounded-lg transition-all duration-300 text-start px-3"
+              >
+                {" "}
+                <h3 className="ml-[24px] mt-[24px] font-semibold text-base">{item.title}</h3>
+                <div className="flex justify-between items-center ml-[24px] mt-[6px]">
+                  <span className="font-medium text-xs">{item.text}</span>
+
+                  <span className="font-bold text-2xl">{item.price}</span>
+                </div>
+                <img
+                  src={`/images/${item.img}`}
+                  className="mt-[44px] ml-[24px]"
+                  alt="img"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="flex  max-w-[1060px] mx-auto gap-[38px] mt-[40px]">
+            <div className="w-[328px] h-[475px] border rounded-[8px] border-[#E9E9EB] ">
+              <h3 className="font-semibold text-base ml-[32px] mt-[32px]">Best Selling</h3>
+              <span className="font-medium text-xs ml-[32px] mt-[6px]">THIS MONTH</span>
+              <hr className="w-[328px] h-[1px] bg-[#E9E9EB] mt-[24px] " />
+              <div className="mt-[32px] ml-[32px]">
+              <span className="font-bold text-24xl ">$2,400</span>
+              <span className="font-medium text-sm"> - Total Sales</span>
+              </div>
+              <button className="mt-[24px] w-[270px] h-[28px] ml-[32px] rounded-full border  border-[#E6E7E8] font-medium text-xs">Classic Monochrome Tees — $940 Sales</button>
+              <button className="mt-[24px] w-[267px] h-[28px]  ml-[32px] rounded-full border border-[#E6E7E8] font-medium text-xs">Monochromatic Wardrobe — $790 Sales</button>
+              <button className="mt-[24px] w-[221px] h-[28px]  ml-[32px] rounded-full border border-[#E6E7E8] font-medium text-xs">Essential Neutrals — $740 Sales</button>
+            
+              <img src="/images/doughnut.png" alt="" className="ml-[32px] mt-[32px]" />
+            </div>
+            <div className="w-[695px] h-[475px] border rounded-[8px] border-[#E9E9EB] ">
+              <div className="flex items-center ml-[40px] mt-[36.5px] gap-2">
+              <h3 className="font-semibold text-base">Recent Orders</h3>
+              <button className="w-[78px] h-[28px] bg-[#F6F6F6] rounded-full font-medium text-xs">View All</button>
+              </div>
+              <table className="table-fixed w-[693px] mt-[20px]">
+                <thead>
+                  <tr className=" h-[45px] border border-[#E9E9EB] font-medium text-sm text-[#5C5F6A] ">
+                    <th>Item</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {table.map((item) => (
+                    <tr key={item.id} className=" h-[57px] border-b border-[#E9E9EB] font-medium text-sm text-[#5C5F6A] ">
+                      <td >{item.text}</td>
+                      <td>{item.data}</td>
+                      <td>{item.price}</td>
+                      <td>{item.status}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -26,6 +26,7 @@ import Changepassword from "./pages/Changepassword";
 import Emptystate from "./pages/Emptystate";
 import Loginpage from "./pages/Loginpage";
 import Dashboard from "./pages/Dashboard";
+import Products from "./pages/Products";
 
 
 
@@ -54,6 +55,7 @@ function App() {
           <Route path="/empty" element={<Emptystate/>}/>
           <Route path="/loginpage" element={<Loginpage/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/products" element={<Products/>}/>
          
 
         </Routes>
