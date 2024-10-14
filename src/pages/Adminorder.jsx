@@ -1,129 +1,130 @@
-import React from "react";
+import React from 'react'
 
-const Products = () => {
-  const menu = [
-    {
-      icon: "Dashboard.svg",
-      title: "Dashboard",
-    },
-    {
-      icon: "Vector1.svg",
-      title: "Products",
-    },
-    {
-      icon: "Vector3.svg",
-      title: "Orders",
-    },
-    {
-      icon: "Vector4.svg",
-      title: "Customers",
-    },
-    {
-      icon: "Vector5.svg",
-      title: "Reviews",
-    },
-    {
-      icon: "Vector6.svg",
-      title: "Settings",
-    },
-  ];
+const Adminorder = () => {
 
-  const products = [
-    {
-      images: "t-shirt-1.png",
-      name: "Raw Black T-Shirt Lineup",
-      sku: "47514501",
+    const menu = [
+        {
+          icon: "Dashboard.svg",
+          title: "Dashboard",
+        },
+        {
+          icon: "Vector1.svg",
+          title: "Products",
+        },
+        {
+          icon: "Vector3.svg",
+          title: "Orders",
+        },
+        {
+          icon: "Vector4.svg",
+          title: "Customers",
+        },
+        {
+          icon: "Vector5.svg",
+          title: "Reviews",
+        },
+        {
+          icon: "Vector6.svg",
+          title: "Settings",
+        },
+      ];
+    
+      const products = [
+        {
+          images: "t-shirt-1.png",
+          name: "Raw Black T-Shirt Lineup",
+          sku: "47514501",
+    
+          price: "$75.00",
+          stock: "In Stock",
+          categories: "In Stock",
+    
+          action: "Vector9.svg",
+        },
+    
+        {
+          images: "t-shirt-1.png",
+          name: "Classic Monochrome Tees",
+          sku: "47514501",
+    
+          price: "$35.00",
+          stock: "In Stock",
+          categories: "T-shirt, Men",
+    
+          action: "Vector9.svg",
+        },
+    
+        {
+          images: "t-shirt-1.png",
+          name: "Monochromatic Wardrobe",
+          sku: "47514501",
+    
+          price: "$27.00",
+          stock: "In Stock",
+          categories: "T-shirt",
+    
+          action: "Vector9.svg",
+        },
+        {
+          images: "t-shirt-1.png",
+          name: "Essential Neutrals",
+          sku: "47514501",
+    
+          price: "$22.00",
+          stock: "In Stock",
+          categories: "T-shirt, Raw",
+    
+          action: "Vector9.svg",
+        },
+        {
+          images: "t-shirt-1.png",
+          name: "UTRAANET Black",
+          sku: "47514501",
+    
+          price: "$43.00",
+          stock: "In Stock",
+          categories: "T-shirt, Trend",
+    
+          action: "Vector9.svg",
+        },
+        {
+          images: "t-shirt-1.png",
+          name: "Elegant Ebony Sweatshirts",
+          sku: "47514501",
+    
+          price: "$35.00",
+          stock: "In Stock",
+          categories: "T-shirt",
+    
+          action: "Vector9.svg",
+        },
+        {
+          images: "t-shirt-1.png",
+          name: "Monochromatic Wardrobe",
+          sku: "47514501",
+    
+          price: "$57.00",
+          stock: "In Stock",
+          categories: "Hoodie",
+    
+          action: "Vector9.svg",
+        },
+        {
+          images: "t-shirt-1.png",
+          name: "Monochromatic Wardrobe",
+          sku: "47514501",
+          price: "$30.00",
+          stock: "In Stock",
+          categories: "T-shirt",
+    
+          action: "Vector9.svg",
+        },
+      ];
 
-      price: "$75.00",
-      stock: "In Stock",
-      categories: "In Stock",
-
-      action: "Vector9.svg",
-    },
-
-    {
-      images: "t-shirt-1.png",
-      name: "Classic Monochrome Tees",
-      sku: "47514501",
-
-      price: "$35.00",
-      stock: "In Stock",
-      categories: "T-shirt, Men",
-
-      action: "Vector9.svg",
-    },
-
-    {
-      images: "t-shirt-1.png",
-      name: "Monochromatic Wardrobe",
-      sku: "47514501",
-
-      price: "$27.00",
-      stock: "In Stock",
-      categories: "T-shirt",
-
-      action: "Vector9.svg",
-    },
-    {
-      images: "t-shirt-1.png",
-      name: "Essential Neutrals",
-      sku: "47514501",
-
-      price: "$22.00",
-      stock: "In Stock",
-      categories: "T-shirt, Raw",
-
-      action: "Vector9.svg",
-    },
-    {
-      images: "t-shirt-1.png",
-      name: "UTRAANET Black",
-      sku: "47514501",
-
-      price: "$43.00",
-      stock: "In Stock",
-      categories: "T-shirt, Trend",
-
-      action: "Vector9.svg",
-    },
-    {
-      images: "t-shirt-1.png",
-      name: "Elegant Ebony Sweatshirts",
-      sku: "47514501",
-
-      price: "$35.00",
-      stock: "In Stock",
-      categories: "T-shirt",
-
-      action: "Vector9.svg",
-    },
-    {
-      images: "t-shirt-1.png",
-      name: "Monochromatic Wardrobe",
-      sku: "47514501",
-
-      price: "$57.00",
-      stock: "In Stock",
-      categories: "Hoodie",
-
-      action: "Vector9.svg",
-    },
-    {
-      images: "t-shirt-1.png",
-      name: "Monochromatic Wardrobe",
-      sku: "47514501",
-      price: "$30.00",
-      stock: "In Stock",
-      categories: "T-shirt",
-
-      action: "Vector9.svg",
-    },
-  ];
-
-  const pageNumbers = [1, 2, "...", 23, 24];
+      const pageNumbers = [1, 2, "...", 23, 24];
   return (
     <div>
-      <div className=" flex">
+         <div className=" flex">
         <div className="border w-[260px] h-[1126px] border-[#E9E9EB] p-8">
           <div className="flex gap-[12px] ">
             <img
@@ -179,14 +180,12 @@ const Products = () => {
 
           <div className="w-[1060px] h-[922px]  mt-[64px] rounded border ml-[48px] border-[#E9E9EB]">
             <div className="flex justify-between items-center mt-[24px] w-[980px]  ">
-              <h3 className="font-medium text-lg ml-[48px] ">Products</h3>
+              <h3 className="font-medium text-lg ml-[48px] ">Orders</h3>
               <div className="flex items-center gap-4  ">
-                <button className="bg-black text-white font-medium text-sm w-[124px] h-[40px] rounded-[4px]">
-                  Add product
-                </button>
+                
                 <input
                   type="text"
-                  placeholder="Search products"
+                  placeholder="Search Order"
                   class="w-[242px] h-[40px] font-medium text-sm rounded border-b-gray-500"
                 />
               </div>
@@ -312,8 +311,9 @@ const Products = () => {
           </div>
         </div>
       </div>
+      
     </div>
-  );
-};
+  )
+}
 
-export default Products;
+export default Adminorder

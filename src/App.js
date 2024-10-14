@@ -27,6 +27,10 @@ import Emptystate from "./pages/Emptystate";
 import Loginpage from "./pages/Loginpage";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
+import Addproduct from "./pages/Addproduct";
+import Adminorder from "./pages/Adminorder";
+import Setting from "./pages/Setting";
+
 
 
 
@@ -56,7 +60,9 @@ function App() {
           <Route path="/loginpage" element={<Loginpage/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/products" element={<Products/>}/>
-         
+          <Route path="/addproduct" element={<Addproduct/>}/>
+          <Route path="/adminorder" element={<Adminorder/>}/>
+          <Route path="/setting" element={<Setting/>}/>
 
         </Routes>
       </div>

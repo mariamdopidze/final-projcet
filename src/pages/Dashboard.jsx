@@ -36,15 +36,15 @@ const Dashboard = () => {
       img: "Vector8.png",
     },
     {
-      title: "Total Sales",
+      title: "Customers",
       text: "THIS MONTH",
       price: "$ 4,235",
       img: "Chart.png",
     },
 
     {
-      title: "Total Sales",
-      text: "THIS MONTH",
+      title: "Orders",
+      text: "Monthly GOALS : 1,000",
       price: "$ 4,235",
       img: "Progress.png",
     },
@@ -87,7 +87,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="flex">
+      <div className="flex ">
         <div className="border w-[260px] h-[925px] border-[#E9E9EB] p-8">
           <div className="flex gap-[12px] ">
             <img
@@ -125,7 +125,7 @@ const Dashboard = () => {
         </div>
 
         <div className="flex-1 ">
-          <header className="max-w-[1060px] mx-auto  border-[#E9E9EB] p-8">
+          <header className="max-w-[1060px] mx-auto  border-[#E9E9EB] mt-[32px] ml-[48px]">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <span className="text-sm font-medium">Admin</span>
@@ -139,7 +139,7 @@ const Dashboard = () => {
             </div>
           </header>
 
-          <div class="grid grid-cols-3 gap-[38px] mt-[56px] max-w-[1060px]  mx-auto">
+          <div class="grid grid-cols-3 gap-[38px] mt-[56px]  ml-[48px] max-w-[1060px]  mx-auto">
             {box.map((item, key) => (
               <div
                 key={key}
@@ -160,7 +160,7 @@ const Dashboard = () => {
               </div>
             ))}
           </div>
-          <div className="flex  max-w-[1060px] mx-auto gap-[38px] mt-[40px]">
+          <div className="flex  max-w-[1060px] mx-auto ml-[48px] gap-[38px] mt-[40px]">
             <div className="w-[328px] h-[475px] border rounded-[8px] border-[#E9E9EB] ">
               <h3 className="font-semibold text-base ml-[32px] mt-[32px]">Best Selling</h3>
               <span className="font-medium text-xs ml-[32px] mt-[6px]">THIS MONTH</span>
@@ -180,26 +180,27 @@ const Dashboard = () => {
               <h3 className="font-semibold text-base">Recent Orders</h3>
               <button className="w-[78px] h-[28px] bg-[#F6F6F6] rounded-full font-medium text-xs">View All</button>
               </div>
-              <table className="table-fixed w-[693px] mt-[20px]">
-                <thead>
-                  <tr className=" h-[45px] border border-[#E9E9EB] font-medium text-sm text-[#5C5F6A] ">
-                    <th>Item</th>
-                    <th>Date</th>
-                    <th>Total</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {table.map((item) => (
-                    <tr key={item.id} className=" h-[57px] border-b border-[#E9E9EB] font-medium text-sm text-[#5C5F6A] ">
-                      <td >{item.text}</td>
-                      <td>{item.data}</td>
-                      <td>{item.price}</td>
-                      <td>{item.status}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <table className="table-fixed w-full mt-[20px] border-collapse">
+  <thead>
+    <tr className="h-[45px] text-left font-medium text-sm text-[#5C5F6A] border-b border-[#E9E9EB]">
+      <th className="px-4 py-2">Item</th>
+      <th className="px-4 py-2">Date</th>
+      <th className="px-4 py-2">Total</th>
+      <th className="px-4 py-2">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {table.map((item) => (
+      <tr key={item.id} className="h-[57px] hover:bg-[#F9F9F9] border-b border-[#E9E9EB] mt-[24px] text-sm text-[#5C5F6A]">
+        <td className="px-4 py-2">{item.text}</td>
+        <td className="px-4 py-2">{item.data}</td>
+        <td className="px-4 py-2">{item.price}</td>
+        <td className="px-4 py-2">{item.status}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
             </div>
           </div>
         </div>
