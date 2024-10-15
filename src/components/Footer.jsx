@@ -90,7 +90,12 @@ const Footer = () => {
               <img src="/images/Visa.png" alt="Visa logo" />
             </div>
           </div>
+          
         </div>
+      
+      </div>
+      <div className="mt-8 text-center">
+        <span className="text-sm font-normal text-[#5C5F6A]">© 2023 DevCut. All rights reserved.</span>
       </div>
     </footer>
   );

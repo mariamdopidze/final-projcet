@@ -167,12 +167,12 @@ const Customers = () => {
 
           <div className="w-[1060px] h-[922px]  mt-[64px] rounded border ml-[48px] border-[#E9E9EB]">
             <div className="flex justify-between items-center mt-[24px] w-[980px]  ">
-              <h3 className="font-medium text-lg ml-[48px] ">Reviews</h3>
+              <h3 className="font-medium text-lg ml-[48px] ">Customers</h3>
               <div className="flex items-center gap-4  ">
                 <div class="relative w-[242px] h-[40px]">
                   <input
                     type="text"
-                    placeholder="Search reviews"
+                    placeholder="Search customers"
                     class="w-full h-full pl-10  font-medium text-sm rounded border border-gray-500 focus:outline-none"
                   />
                   <img

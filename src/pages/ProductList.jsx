@@ -25,6 +25,12 @@ const ProductList = () => {
     }
   };
 
+  const [selectedColor, setSelectedColor] = useState("");
+
+  const handleColorClick = (color) => {
+    setSelectedColor(color); 
+  };
+
   const products = [
     {
       img: "/images/t-shirt-1.png",
@@ -98,44 +104,37 @@ const ProductList = () => {
                   IN STOCK
                 </button>
               </div>
-              <h4 className="font-semibold text-lg mt-[24px]">$75.00</h4>
+              <h4 className="font-semibold text-lg mt-[24px] text-[#0E1422]">
+                $75.00
+              </h4>
 
               <div className="flex flex-col ">
-                <h6 className="font-medium text-xs  ">Available Colors</h6>
+                <div className="flex flex-col items-start">
+                  <h3 className="text-sm text-[#5C5F6A] mt-[32px]font-medium mb-4">Available Colors</h3>
+                  <div className="flex gap-[10px]">
+                    <div
+                      onClick={() => handleColorClick("purple")}
+                      className={`w-[32px] h-[32px] rounded-full cursor-pointer ${
+                        selectedColor === "purple" ? "ring-2 ring-black" : ""
+                      }`}
+                      style={{ backgroundColor: "#A3BEF8" }}
+                    ></div>
 
-                <div className="flex flex-wrap mt-2.5">
-                  <div className="flex items-center me-4">
-                    <input
-                      checked
-                      id="blue-radio"
-                      type="radio"
-                      value=""
-                      name="colored-radio"
-                      className="w-[24px] h-[24px] text-blue-600 focus:ring-6"
-                    />
-                    <label htmlFor="blue-radio" className="ml-2"></label>
-                  </div>
+                    <div
+                      onClick={() => handleColorClick("yellow")}
+                      className={`w-[32px] h-[32px] rounded-full cursor-pointerbg-[#FFD58A] ${
+                        selectedColor === "yellow" ? "ring-2 ring-black" : ""
+                      }`}
+                      style={{ backgroundColor: "#FFD58A" }}
+                    ></div>
 
-                  <div className="flex items-center me-4">
-                    <input
-                      id="green-radio"
-                      type="radio"
-                      value=""
-                      name="colored-radio"
-                      className="w-[24px] h-[24px] text-green-600 bg-gray-100 border-gray-900 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-900 focus:ring-2 dark:bg-gray-700 dark:border-gray-900"
-                    />
-                    <label htmlFor="green-radio" className="ml-2"></label>
-                  </div>
-
-                  <div className="flex items-center me-4">
-                    <input
-                      id="yellow-radio"
-                      type="radio"
-                      value=""
-                      name="colored-radio"
-                      className="w-[24px] h-[24px] text-yellow-400 bg-gray-100 border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <label htmlFor="yellow-radio" className="ml-2"></label>
+                    <div
+                      onClick={() => handleColorClick("green")}
+                      className={`w-[32px] h-[32px] rounded-full cursor-pointer bg-[#83B18B] ${
+                        selectedColor === "green" ? "ring-2 ring-black" : ""
+                      }`}
+                      style={{ backgroundColor: "#83B18B" }}
+                    ></div>
                   </div>
                 </div>
 

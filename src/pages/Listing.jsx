@@ -2,6 +2,7 @@ import React from "react";
 import Discount from "../components/Discount";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useState } from "react";
 
 const Listing = () => {
   const items = [
@@ -13,28 +14,11 @@ const Listing = () => {
     { id: "6", label: "Perfume" },
   ];
 
-  const radios = [
-    {
-      id: "green-radio",
-      colorClass:
-        "text-green-600 focus:ring-green-500 dark:focus:ring-green-600",
-    },
-    {
-      id: "purple-radio",
-      colorClass:
-        "text-purple-600 focus:ring-purple-500 dark:focus:ring-purple-600",
-      checked: true,
-    },
-    {
-      id: "teal-radio",
-      colorClass: "text-teal-600 focus:ring-teal-500 dark:focus:ring-teal-600",
-    },
-    {
-      id: "yellow-radio",
-      colorClass:
-        "text-yellow-400 focus:ring-yellow-500 dark:focus:ring-yellow-600",
-    },
-  ];
+  const [selectedColor, setSelectedColor] = useState("");
+
+  const handleColorClick = (color) => {
+    setSelectedColor(color);
+  };
 
   const sizes = ["S", "M", "L", "XL", "XXL"];
 
@@ -138,27 +122,52 @@ const Listing = () => {
               ))}
             </ul>
 
-            <h6 className="mt-11 ml-4 font-medium text-sm">Color</h6>
+            <div className="flex flex-col items-start">
+              <h3 className="text-sm font-medium mb-4 mt-14 ml-4">Color</h3>
+              <div className="flex gap-[10px] ml-4">
+                <div
+                  onClick={() => handleColorClick("purple")}
+                  className={`w-[32px] h-[32px] rounded-full cursor-pointer ${
+                    selectedColor === "purple" ? "ring-2 ring-black" : ""
+                  }`}
+                  style={{ backgroundColor: "#A3BEF8" }}
+                ></div>
 
-            <div className="flex flex-wrap mt-3 ml-[17.5px] gap-4">
-              {radios.map((radio) => (
-                <div key={radio.id} className="flex items-center ">
-                  <input
-                    id={radio.id}
-                    type="radio"
-                    name="colored-radio"
-                    className={`w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ${radio.colorClass}`}
-                    defaultChecked={radio.checked || false}
-                  />
-                </div>
-              ))}
+                <div
+                  onClick={() => handleColorClick("yellow")}
+                  className={`w-[32px] h-[32px] rounded-full cursor-pointerbg-[#FFD58A] ${
+                    selectedColor === "yellow" ? "ring-2 ring-black" : ""
+                  }`}
+                  style={{ backgroundColor: "#FFD58A" }}
+                ></div>
+
+                <div
+                  onClick={() => handleColorClick("green")}
+                  className={`w-[32px] h-[32px] rounded-full cursor-pointer bg-[#83B18B] ${
+                    selectedColor === "green" ? "ring-2 ring-black" : ""
+                  }`}
+                  style={{ backgroundColor: "#83B18B" }}
+                ></div>
+                <div
+                  onClick={() => handleColorClick("blue")}
+                  className={`w-[32px] h-[32px] rounded-full cursor-pointerbg-[#FFD58A] ${
+                    selectedColor === "yellow" ? "ring-2 ring-black" : ""
+                  }`}
+                  style={{ backgroundColor: "#4078FF" }}
+                ></div>
+              </div>
             </div>
 
             <h6 className="font-medium text-sm mt-14 ml-4">Size</h6>
 
-            <div className="flex mx-3 gap-4">
+            <div className="grid grid-cols-4 gap-2 mx-3">
               {sizes.map((size) => (
-                <div key={size} className="flex items-center">
+                <div
+                  key={size}
+                  className={`flex items-center justify-center ${
+                    size === "XXL" ? "col-span-1 mt-4" : ""
+                  }`}
+                >
                   <input
                     id={`size-${size}`}
                     type="checkbox"
