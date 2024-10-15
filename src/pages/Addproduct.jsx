@@ -63,50 +63,53 @@ const Addproduct = () => {
   return (
     <div>
       <div className="flex">
-        <div className="border w-[260px] h-[925px] border-[#E9E9EB] p-8">
-          <div className="flex gap-[12px] ">
-            <img
-              src="/images/logo2.png"
-              alt="img"
-              className="mb-2 w-[16px] h-[30px]"
-            />
-            <h1 className="text-lg font-bold">Admin</h1>
-          </div>
+      <div className="border w-[260px] h-[1126px] border-[#E9E9EB]">
+  <div className="flex gap-[12px] items-center justify-center mt-[16px]">
+    <img
+      src="/images/logo2.png"
+      alt="img"
+      className="w-[16px] h-[30px]"
+    />
+    <h1 className="text-lg font-bold">Admin</h1>
+  </div>
 
-          <div className="flex flex-col justify-start mt-8">
-            {menu.map((item, key) => (
-              <a
-                href=""
-                key={key}
-                className="block my-4 w-full hover:bg-[#F6F6F6] rounded-lg transition-all duration-300 text-start px-3"
-              >
-                <img
-                  src={`/images/${item.icon}`}
-                  className="inline py-2"
-                  alt="img"
-                />
-                <span className="ml-2 font-medium text-sm text-[#5C5F6A]">
-                  {item.title}
-                </span>
-              </a>
-            ))}
-            <hr className="w-[260px] border-[#E9E9EB] h-[1px] mt-[46px]" />
-            <button className="w-[212px] h-[41px] mt-[32px] rounded-[8px] flex items-center justify-center space-x-2">
-              <img
-                src="/images/Add.svg"
-                alt="img"
-                className="w-[24px] h-[24px]"
-              />
-              <span>Extras</span>
-            </button>
-          </div>
-        </div>
+  <div className="flex flex-col justify-start mt-8">
+    {menu.map((item, key) => (
+      <a
+        href=""
+        key={key}
+        className=" my-4 w-full hover:bg-[#F6F6F6] rounded-lg transition-all duration-300 text-start px-3 flex items-center pl-[47px]"
+      >
+        <img
+          src={`/images/${item.icon}`}
+          className="w-[16px] h-[16px]"
+          alt="img"
+        />
+        <span className="ml-2 font-medium text-sm text-[#5C5F6A]">
+          {item.title}
+        </span>
+      </a>
+    ))}
+   <button className="my-4 w-full hover:bg-[#F6F6F6] rounded-lg transition-all duration-300 text-start px-3 flex items-center pl-[47px] h-[41px] mt-[32px]">
+  <img
+    src="/images/Add.svg"
+    alt="img"
+    className="w-[24px] h-[24px]"
+  />
+  <span className="ml-2 font-medium text-sm text-[#5C5F6A]">
+    Extras
+  </span>
+</button>
+  </div>
+</div>
+
+
 
         <div className="flex-1 ">
-          <header className="max-w-[1060px] mx-auto  border-[#E9E9EB] mt-[32px] ml-[48px]">
+          <header className="max-w-[1060px] mx-auto  border-[#E9E9EB] mt-[16px] ml-[48px]">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <span className="text-sm font-medium">Admin</span>
+                <span className="text-sm font-medium text-[#5C5F6A]">Admin</span>
                 <img src="images/Chevron.png" alt="img" />
                 <p className="text-sm font-medium">Dashboard</p>
               </div>
@@ -117,11 +120,11 @@ const Addproduct = () => {
             </div>
           </header>
 
-          <div className="w-[1060px] h-[885px]  mt-[64px] rounded border ml-[48px] pl-[48px]  border-[#E9E9EB]">
-            <h3 className="font-medium text-xl mt-[32px] ">Add Product</h3>
-            <hr className="bg-[#E9E9EB] mt-[32px]" />
+          <div className="w-[1060px] h-[885px]  mt-[64px] rounded border ml-[48px]  border-[#E9E9EB]">
+            <h3 className="font-medium text-lg mt-[32px] text-[#0E1422] pl-[48px]">Add Product</h3>
+            <hr className="bg-[#E9E9EB] mt-[32px] " />
 
-            <div className="flex mt-[64px] gap-[74px]">
+            <div className="flex mt-[64px] gap-[74px] pl-[48px]">
               <div>
                 {inputs.map((input, index) => (
                   <div key={index} className="w-[320px] h-[45px] mb-10">
