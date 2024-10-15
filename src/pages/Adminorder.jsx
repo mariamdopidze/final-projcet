@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 
 const Adminorder = () => {
 
@@ -122,6 +123,12 @@ const Adminorder = () => {
       ];
 
       const pageNumbers = [1, 2, "...", 23, 24];
+
+      const [activePage, setActivePage] = useState(null);
+
+  const handleClick = (number) => {
+    setActivePage(number);
+  };
   return (
     <div>
          <div className=" flex">
@@ -187,11 +194,18 @@ const Adminorder = () => {
               <h3 className="font-medium text-lg ml-[48px] ">Orders</h3>
               <div className="flex items-center gap-4  ">
                 
-                <input
-                  type="text"
-                  placeholder="Search Order"
-                  class="w-[242px] h-[40px] font-medium text-sm rounded border-b-gray-500"
-                />
+              <div class="relative w-[242px] h-[40px]">
+                  <input
+                    type="text"
+                    placeholder="Search Order"
+                    class="w-full h-full pl-10 font-medium text-sm rounded border border-gray-500 focus:outline-none"
+                  />
+                  <img
+                    src="/images/SearchIcon.png"
+                    alt="Search"
+                    class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
+                  />
+                </div>
               </div>
             </div>
             <table className="table-auto w-full mt-[24px] ">
@@ -245,20 +259,23 @@ const Adminorder = () => {
               </tbody>
             </table>
 
-            <nav aria-label="Page navigation example">
-              <ul className="flex items-center -space-x-px h-8 text-sm justify-end mt-[34px] mr-[58px]">
+            <nav
+              aria-label="Page navigation example"
+              className="mt-[34px] mr-[58px]"
+            >
+              <ul className="flex items-center space-x-1 h-8 text-sm justify-end">
                 <li>
                   <a
                     href="#"
-                    className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white "
+                    className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white hover:text-gray-700"
                   >
                     <span className="sr-only">Previous</span>
                     <svg
-                      className="w-2.5 h-2.5 rtl:rotate-180"
-                      aria-hidden="true"
+                      className="w-2.5 h-2.5"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 6 10"
+                      aria-hidden="true"
                     >
                       <path
                         stroke="currentColor"
@@ -275,12 +292,13 @@ const Adminorder = () => {
                   <li key={number}>
                     <a
                       href="#"
-                      className={`flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white  hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400  dark:hover:text-white ${
-                        number === 3
-                          ? "z-10 text-blue-600  bg-blue-50  hover:text-blue-700   dark:text-white"
-                          : ""
+                      onClick={() => handleClick(number)}
+                      className={`flex items-center justify-center px-3 h-8 leading-tight ${
+                        activePage === number
+                          ? "text-[#0E1422] bg-[#F6F6F6] z-10"
+                          : "text-gray-500 bg-white hover:text-gray-700"
                       }`}
-                      aria-current={number === 3 ? "page" : undefined}
+                      aria-current={activePage === number ? "page" : undefined}
                     >
                       {number}
                     </a>
@@ -290,15 +308,15 @@ const Adminorder = () => {
                 <li>
                   <a
                     href="#"
-                    className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500  hover:text-gray-700 dark:text-gray-400  dark:hover:text-white"
+                    className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 hover:text-gray-700"
                   >
                     <span className="sr-only">Next</span>
                     <svg
-                      className="w-2.5 h-2.5 rtl:rotate-180"
-                      aria-hidden="true"
+                      className="w-2.5 h-2.5"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 6 10"
+                      aria-hidden="true"
                     >
                       <path
                         stroke="currentColor"

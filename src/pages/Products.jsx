@@ -188,11 +188,18 @@ const Products = () => {
                 <button className="bg-black text-white font-medium text-sm w-[124px] h-[40px] rounded-[4px]">
                   Add product
                 </button>
-                <input
-                  type="text"
-                  placeholder="Search products"
-                  class="w-[242px] h-[40px] font-medium text-sm rounded border-b-gray-500"
-                />
+                <div class="relative w-[242px] h-[40px]">
+                  <input
+                    type="text"
+                    placeholder="Search Products"
+                    class="w-full h-full pl-10 font-medium text-sm rounded border border-gray-500 focus:outline-none"
+                  />
+                  <img
+                    src="/images/SearchIcon.png"
+                    alt="Search"
+                    class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
+                  />
+                </div>
               </div>
             </div>
             <table className="table-auto w-full mt-[24px] ">

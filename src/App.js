@@ -30,6 +30,8 @@ import Products from "./pages/Products";
 import Addproduct from "./pages/Addproduct";
 import Adminorder from "./pages/Adminorder";
 import Setting from "./pages/Setting";
+import Reviews from "./pages/Reviews";
+import Customers from "./pages/Customers";
 
 
 
@@ -63,6 +65,8 @@ function App() {
           <Route path="/addproduct" element={<Addproduct/>}/>
           <Route path="/adminorder" element={<Adminorder/>}/>
           <Route path="/setting" element={<Setting/>}/>
+          <Route path="/reviews" element={<Reviews/>}/>
+          <Route path="/customers" element={<Customers/>}/>
 
         </Routes>
       </div>
