@@ -62,7 +62,7 @@ const Main = () => {
     <div>
        <Discount />
        <Header />
-      <div className="bg-neutral-100  py-18">
+      <div className="bg-neutral-100 py-18">
         <div className="flex items-center mx-auto max-w-[1116px]">
           <div className="lg:w-1/2">
             <h2 className="text-2xl text-black mb-6 font-semibold">
