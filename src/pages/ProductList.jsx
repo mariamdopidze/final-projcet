@@ -2,14 +2,12 @@ import Discount from "../components/Discount";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import React, { useRef, useState } from "react";
-// Import Swiper React components
+
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
-// import required modules
 import { Pagination } from "swiper/modules";
 
 const ProductList = () => {
@@ -28,7 +26,7 @@ const ProductList = () => {
   const [selectedColor, setSelectedColor] = useState("");
 
   const handleColorClick = (color) => {
-    setSelectedColor(color); 
+    setSelectedColor(color);
   };
 
   const products = [
@@ -58,6 +56,41 @@ const ProductList = () => {
     },
   ];
 
+  const handleProductClick = (product) => {
+    alert(`Viewing details for: ${product.title}`);
+  };
+
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    setIsAdded(true);
+
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 2000);
+  };
+
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+  };
+
+  const handleReviewsClick = () => {
+    console.log("Navigating to reviews ");
+  };
+
+  const handleStockInfo = () => {
+    alert("Product is in stock. ");
+  };
+
+  const [activeButton, setActiveButton] = useState(null);
+
+  const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName);
+
+    alert(`You clicked ${buttonName}`);
+  };
+
   return (
     <div>
       <Discount />
@@ -83,6 +116,12 @@ const ProductList = () => {
                     className="mx-auto pt-20 w-[288px] h-[404px]"
                   />
                 </SwiperSlide>
+                <SwiperSlide>
+                  <img
+                    src="/images/t-shirt-4.png"
+                    className="mx-auto pt-20 w-[288px] h-[404px]"
+                  />
+                </SwiperSlide>
               </Swiper>
             </div>
             <div className="flex flex-col items-start mr-30 w-[438px] h-[562px] ">
@@ -96,11 +135,24 @@ const ProductList = () => {
                 />
               </div>
               <div className="flex space-x-3 mt-3">
-                <button className="w-[167px] h-[28px] border rounded-[100px] bg-neutral-100 font-medium text-xs flex items-center px-4">
-                  <img src="/images/star.png" className="w-[16px] h-[15px]" />
+                <button
+                  onClick={handleReviewsClick}
+                  className="w-[167px] h-[28px] border rounded-[100px] bg-neutral-100 font-medium text-xs flex items-center px-4 transition duration-300 hover:bg-neutral-200"
+                  aria-label="View reviews"
+                >
+                  <img
+                    src="/images/star.png"
+                    alt="Rating Star"
+                    className="w-[16px] h-[15px]"
+                  />
                   <span className="ml-[8px]">4.2 — 54 Reviews</span>
                 </button>
-                <button className="w-[89px] h-[28px] rounded-[100px] border text-xs font-medium px-4 ">
+
+                <button
+                  onClick={handleStockInfo}
+                  className="w-[89px] h-[28px] rounded-[100px] border text-xs font-medium px-4 transition duration-300 hover:bg-red-100"
+                  aria-label="Check stock status"
+                >
                   IN STOCK
                 </button>
               </div>
@@ -110,7 +162,9 @@ const ProductList = () => {
 
               <div className="flex flex-col ">
                 <div className="flex flex-col items-start">
-                  <h3 className="text-sm text-[#5C5F6A] mt-[32px]font-medium mb-4">Available Colors</h3>
+                  <h3 className="text-sm text-[#5C5F6A] mt-[32px]font-medium mb-4">
+                    Available Colors
+                  </h3>
                   <div className="flex gap-[10px]">
                     <div
                       onClick={() => handleColorClick("purple")}
@@ -234,12 +288,26 @@ const ProductList = () => {
                 </div>
 
                 <div className="flex space-x-4 mt-10">
-                  <button className="w-[284px] h-[44px] rounded-[4px] bg-black text-white font-medium text-sm">
-                    Add to cart
+                  <button
+                    onClick={handleAddToCart}
+                    className="w-[284px] h-[44px] rounded-[4px] bg-black text-white font-medium text-sm flex items-center justify-center transition duration-300 hover:bg-neutral-800"
+                    disabled={isAdded}
+                  >
+                    {isAdded ? "Adding..." : "Add to cart"}
                   </button>
 
-                  <button className="w-[43px] h-[43px] rounded-[4px] border-2 border-neutral-100 flex items-center justify-center">
-                    <img src="images/Heart.png" className="w-[17px] h-[14px]" />
+                  <button
+                    onClick={toggleFavorite}
+                    className={`w-[43px] h-[43px] rounded-[4px] border-2 ${
+                      isFavorite ? "border-red-500" : "border-neutral-100"
+                    } flex items-center justify-center transition duration-300`}
+                    aria-label="Add to favorites"
+                  >
+                    <img
+                      src={isFavorite ? "/images/Add.svg" : "/images/Heart.png"}
+                      alt="Favorite"
+                      className="w-[17px] h-[14px]"
+                    />
                   </button>
                 </div>
 
@@ -254,10 +322,25 @@ const ProductList = () => {
       <div className="bg-white">
         <div className="flex mx-auto max-w-[1116px]">
           <div className="flex flex-col space-y-4 mt-60">
-            <button className="w-[241px] h-[41px] rounded-[8px] bg-neutral-100 text-sm font-medium">
+            <button
+              onClick={() => handleButtonClick("Details")}
+              className={`w-[241px] h-[41px] rounded-[8px] text-sm font-medium transition-colors duration-300 ${
+                activeButton === "Details"
+                  ? "bg-black text-white"
+                  : "bg-neutral-100 hover:bg-neutral-200"
+              }`}
+            >
               Details
             </button>
-            <button className="w-[241px] h-[41px] rounded-[8px] bg-neutral-100 text-sm font-medium">
+
+            <button
+              onClick={() => handleButtonClick("Reviews")}
+              className={`w-[241px] h-[41px] rounded-[8px] text-sm font-medium transition-colors duration-300 ${
+                activeButton === "Reviews"
+                  ? "bg-black text-white"
+                  : "bg-neutral-100 hover:bg-neutral-200"
+              }`}
+            >
               Reviews
             </button>
           </div>
@@ -289,18 +372,28 @@ const ProductList = () => {
       <div>
         <div className="flex mx-auto max-w-[1116px]">
           <div>
-            <div class="grid grid-rows-1 grid-flow-col gap-4 max-w-[1116px] mx-auto mt-20">
+            <div className="grid grid-rows-1 grid-flow-col gap-4 max-w-[1116px] mx-auto mt-20">
               {products.map((product, index) => (
-                <div key={index}>
-                  <div className="w-60 h-80 bg-neutral-100 rounded">
-                    <img src={product.img} />
+                <div
+                  key={index}
+                  className="group cursor-pointer"
+                  onClick={() => handleProductClick(product)}
+                >
+                  <div className="w-60 h-80 bg-neutral-100 rounded overflow-hidden transition-transform duration-300 transform group-hover:scale-105">
+                    <img
+                      src={product.img}
+                      alt={product.title}
+                      className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-90"
+                    />
                   </div>
+
                   <div>
                     <p className="font-medium text-sm mt-3">{product.title}</p>
-                    <div className="flex items-center  mt-2 ">
-                      <button className="bg-white text-center w-20 h-7 rounded-full border text-xs font-medium mt-3 items-center">
+                    <div className="flex items-center mt-2">
+                      <button className="bg-white text-center w-20 h-7 rounded-full border text-xs font-medium mt-3 items-center transition duration-300 hover:bg-neutral-200">
                         {product.stock}
                       </button>
+
                       <div className="mt-3 ml-2 font-normal text-sm text-center">
                         {product.price}
                       </div>

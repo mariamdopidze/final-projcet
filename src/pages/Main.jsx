@@ -2,66 +2,15 @@ import React from "react";
 import Discount from "../components/Discount";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import BestSeling from "../components/BestSeling";
+import FeaturedAndBestSeling from "../components/FeaturedAndBestSeling";
 
 const Main = () => {
-  const products = [
-    {
-      img: "/images/t-shirt-1.png",
-      title: "Classic Monochrome Tees",
-      stock: "IN STOCK",
-      price: "$ 35.00",
-    },
-    {
-      img: "/images/t-shirt-2.png",
-      title: "Monochromatic Wardrobe",
-      stock: "STOCK OUT",
-      price: "$ 27.00",
-    },
-    {
-      img: "/images/t-shirt-3.png",
-      title: "Essential Neutrals",
-      stock: "IN STOCK",
-      price: "$ 22.00",
-    },
-    {
-      img: "/images/t-shirt-4.png",
-      title: "UTRAANET Black",
-      stock: "IN STOCK",
-      price: "$ 47.00",
-    },
-  ];
-
-  const newProducts = [
-    {
-      img: "/images/first.png",
-      title: "Elegant Ebony Sweatshirts",
-      stock: "IN STOCK",
-      price: "$ 60.00",
-    },
-    {
-      img: "/images/second.png",
-      title: "Sleek and Cozy Black",
-      stock: "STOCK OUT",
-      price: "$ 120.00",
-    },
-    {
-      img: "/images/thirst.png",
-      title: "Raw Black Tees",
-      stock: "IN STOCK",
-      price: "$ 85.00",
-    },
-    {
-      img: "/images/four.png",
-      title: "MOCKUP Black",
-      stock: "IN STOCK",
-      price: "$ 85.00",
-    },
-  ];
-
   return (
     <div>
-       <Discount />
-       <Header />
+      <Discount />
+      <Header />
+
       <div className="bg-neutral-100 py-18">
         <div className="flex items-center mx-auto max-w-[1116px]">
           <div className="lg:w-1/2">
@@ -71,15 +20,21 @@ const Main = () => {
             <p className="text-lg text-gray-800 mb-10 font-normal mt-3">
               Discover Our Newest Collection Today.
             </p>
-            <button className="bg-black text-white rounded px-4 py-2 flex items-center h-[44px] top-[260px] left-[182px] p-[12px_24px] gap-[6px] mt-12">
-              View Collection
-              <img src="/images/arrow.png" className="ml-2 mt-1" alt="arrow" />
-            </button>
+            <a href="/listing">
+              <button className="bg-black text-white rounded px-4 py-2 flex items-center h-[44px] top-[260px] left-[182px] p-[12px_24px] gap-[6px] mt-12">
+                View Collection
+                <img
+                  src="/images/arrow.png"
+                  className="ml-2 mt-1"
+                  alt="arrow"
+                />
+              </button>
+            </a>
           </div>
 
           <div className="lg:w-1/2 relative flex justify-center lg:justify-end mt-8 lg:mt-0">
             <img
-              src="/images/Hero Image.png"
+              src="/images/Hero2.png"
               alt="Product"
               className="absolute w-64 h-80 rounded-lg shadow-lg"
             />
@@ -90,7 +45,7 @@ const Main = () => {
 
       <div className="mt-20">
         <div className="items-center mx-auto max-w-[1116px]">
-          <div className="grid grid-rows-1 grid-flow-col gap-4 w-auto ">
+          <div className="grid grid-rows-1 grid-flow-col gap-4 w-auto">
             <div>
               <img src="/images/Icon 1.png" alt="img" className="" />
               <h4 className="text-base font-semibold mt-2">Free Shipping</h4>
@@ -122,36 +77,7 @@ const Main = () => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center h-full mt-20">
-        <p className="font-medium text-xs ">shop now</p>
-        <h4 className="font-bold text-base mt-2">Best Selling</h4>
-      </div>
-
-
-
-      <div>
-        <div class="grid grid-rows-1 grid-flow-col gap-4 max-w-[1116px] mx-auto mt-20">
-          {products.map((product, index) => (
-            <div key={index}>
-              <div className="w-60 h-80 bg-neutral-100 rounded">
-                <img src={product.img} />
-              </div>
-              <div>
-                <p className="font-medium text-sm mt-3">
-                  {product.title}
-                </p>
-                <div className="flex items-center  mt-2 ">
-                <button className="bg-white text-center w-20 h-7 rounded-full border text-xs font-medium mt-3 items-center">
-                 {product.stock}
-                </button>
-                <div className="mt-3 ml-2 font-normal text-sm text-center">{product.price}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-
-        </div>
-      </div>
+      <BestSeling />
 
       <div className="bg-neutral-100 mt-40 h-80">
         <div className="mx-auto max-w-[1116px]">
@@ -164,14 +90,16 @@ const Main = () => {
                 Step into a world of style and explore our diverse collection of
                 clothing categories.
               </p>
-              <button className=" flex items-center pl-6 w-44 h-11 bg-black text-white rounded mt-8">
-                Start Browsing
-                <img
-                  src="/images/arrow.png"
-                  className="ml-2 mt-1"
-                  alt="arrow"
-                />
-              </button>
+              <a href="/listing">
+                <button className="flex items-center pl-6 w-44 h-11 bg-black text-white rounded mt-8">
+                  Start Browsing
+                  <img
+                    src="/images/arrow.png"
+                    className="ml-2 mt-1"
+                    alt="arrow"
+                  />
+                </button>
+              </a>
             </div>
 
             <img
@@ -183,39 +111,44 @@ const Main = () => {
         </div>
       </div>
 
-      <div className="flex  items-center justify-center gap-6 mt-40">
-        <button className="w-24 h-8 border rounded-full font-medium  text-sm">
+      <FeaturedAndBestSeling />
+
+      {/* <div className="flex items-center justify-center gap-6 mt-40">
+        <button className="w-24 h-8 border rounded-full font-medium text-sm">
           Featured
         </button>
-        <button className="text-sm font-normal w-24 h-8 border rounded-full">Best Selling</button>
+        <button className="text-sm font-normal w-24 h-8 border rounded-full">
+          Best Selling
+        </button>
       </div>
-      
-<div>
-        <div class="grid grid-rows-1 grid-flow-col gap-4 max-w-[1116px] mx-auto mt-14">
-          {newProducts.map((product, index) => (
+
+      <div>
+        <div className="grid grid-rows-1 grid-flow-col gap-4 max-w-[1116px] mx-auto mt-14">
+          {apiData.map((product, index) => (
             <div key={index}>
-              <div className="w-60 h-80 bg-neutral-100 rounded">
-                <img src={product.img} />
+              <div className="w-60 h-80 bg-neutral-100 rounded overflow-hidden relative transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
+                <img
+                  src={product.image}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
-                <p className="font-medium text-sm mt-3">
-                  {product.title}
-                </p>
+                <p className="font-medium text-sm mt-3">{product.title}</p>
                 <div className="flex items-center">
-                <button className="bg-white w-20 h-7 rounded-full border text-xs font-medium mt-3 text-center">
-                 {product.stock}
-                </button>
-                <div className="mt-3 ml-2  font-normal text-sm">{product.price}</div>
+                  <button className="bg-white w-20 h-7 rounded-full border text-xs font-medium mt-3 text-center">
+                    {product.rating.count}
+                  </button>
+                  <div className="mt-3 ml-2 font-normal text-sm">
+                    {product.price}
+                  </div>
                 </div>
               </div>
             </div>
           ))}
-
         </div>
-      </div>
-      
-      
-      <Footer/>
+      </div> */}
+
+      <Footer />
     </div>
   );
 };

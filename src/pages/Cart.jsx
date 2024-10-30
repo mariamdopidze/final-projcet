@@ -1,130 +1,113 @@
-import React from "react";
+import React, { useState } from "react";
 import Discount from "../components/Discount";
 import Header from "../components/Header";
-import { useState } from "react";
 import Footer from "../components/Footer";
 
+const CartItem = ({ product, quantity, increment, decrement }) => (
+  <div className="h-[80px] w-[628px] mt-12 flex items-center justify-between">
+    <div className="flex">
+      <div className="w-[80px] h-[80px] rounded-[4px] flex justify-center items-center bg-[#F6F6F6]">
+        <img src={product.image} alt="Product Image" />
+      </div>
+
+      <div className="ml-4">
+        <h4 className="mb-2 font-medium text-sm">{product.title}</h4>
+        <div className="flex items-center">
+          <p className="mr-2 font-medium text-xs">Color:</p>
+          <div
+            className="w-3 h-3 rounded-full"
+            style={{ backgroundColor: product.color }}
+          ></div>
+          <p className="font-medium text-xs"> - Size: {product.size}</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="flex gap-[18px] items-center">
+      <p className="font-medium text-sm">${product.price.toFixed(2)}</p>
+      <div className="flex items-center border rounded-[4px] bg-neutral-100 w-[107px] h-[40px]">
+        <button
+          onClick={decrement}
+          className="w-4 h-4 text-lg text-black flex items-center justify-center ml-4"
+        >
+          -
+        </button>
+        <span className="w-full text-center">{quantity}</span>
+        <button
+          onClick={increment}
+          className="w-4 h-4 text-lg text-black flex items-center justify-center mr-4"
+        >
+          +
+        </button>
+      </div>
+      <div className="bg-[#F6F6F6] w-10 h-10 rounded-[4px] flex justify-center">
+        <img src="/images/X.png" alt="Remove" />
+      </div>
+    </div>
+  </div>
+);
 
 const Cart = () => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantities, setQuantities] = useState([1, 1]);
 
-  const increment = () => {
-    setQuantity(quantity + 1);
+  const increment = (index) => {
+    setQuantities(quantities.map((q, i) => (i === index ? q + 1 : q)));
   };
 
-  const decrement = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
+  const decrement = (index) => {
+    setQuantities(quantities.map((q, i) => (i === index && q > 1 ? q - 1 : q)));
   };
+
+  const products = [
+    {
+      image: "/images/Product.png",
+      title: "Raw Black T-Shirt Lineup",
+      color: "#98BE9E",
+      size: "M",
+      price: 75.0,
+    },
+    {
+      image: "/images/Product.png",
+      title: "Raw Black T-Shirt Lineup",
+      color: "#A8B2FF",
+      size: "M",
+      price: 22.0,
+    },
+  ];
 
   return (
     <div>
       <Discount />
       <Header />
 
-      <div className=" h-[160px] bg-[#F6F6F6] ">
-        <div className="  mx-auto max-w-[1116px]">
+      <div className="h-[160px] bg-[#F6F6F6]">
+        <div className="mx-auto max-w-[1116px]">
           <h3 className="text-2xl font-bold pt-12">Cart</h3>
           <div className="flex flex-row items-center gap-2.5">
-            <p className="text-sm  font-medium">Ecommerce</p>
+            <p className="text-sm font-medium">Ecommerce</p>
             <img src="images/Chevron.png" alt="img" />
-            <p className="text-sm  font-medium">Cart</p>
+            <p className="text-sm font-medium">Cart</p>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1116px] ">
-        <div className="flex flex-row ">
+      <div className="mx-auto max-w-[1116px]">
+        <div className="flex flex-row">
           <div>
             <h6 className="text-base font-semibold pt-20">Your Cart</h6>
-
             <hr className="mt-[18px] w-[628px] bg-[#E9E9EB]" />
 
-            <div className="h-[80px] w-[628px]  mt-12 flex items-center justify-between">
-              <div className="flex">
-                <div className="w-[80px] h-[80px] rounded-[4px] flex justify-center items-center  bg-[#F6F6F6]">
-                  <img src="/images/Product.png" alt="Product Image" />
-                </div>
-
-                <div className="ml-4">
-                  <h4 className="mb-2 font-medium text-sm">
-                    Raw Black T-Shirt Lineup
-                  </h4>
-
-                  <div className="flex items-center">
-                    <p className="mr-2 font-medium text-xs">Color:</p>
-                    <div className="w-3 h-3 bg-[#98BE9E] rounded-full"></div>
-                    <p className="font-medium text-xs"> - Size: M</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex gap-[18px]  items-center">
-                <p className="font-medium text-sm">$75.00</p>
-                <div className="flex items-center border rounded-[4px] rounded-bg-[#E6E7E8] w-[107px] h-[40px] ">
-                  <button
-                    onClick={decrement}
-                    className="w-4 h-4 text-lg text-black flex items-center justify-center ml-4"
-                  >
-                    -
-                  </button>
-                  <span className="w-full text-center">{quantity}</span>
-                  <button
-                    onClick={increment}
-                    className="w-4 h-4 text-lg  text-black flex items-center justify-center mr-4"
-                  >
-                    +
-                  </button>
-                </div>
-                <div className="bg-[#F6F6F6] w-10 h-10 rounded-[4px] flex justify-center ">
-                  <img src="/images/X.png" alt="img " />
-                </div>
-              </div>
-            </div>
-
-            <div className="h-[80px] w-[628px]  mt-10 flex items-center justify-between">
-              <div className="flex">
-                <div className="w-[80px] h-[80px] rounded-[4px] flex justify-center bg-[#F6F6F6]">
-                  <img src="/images/Product.png" alt="Product Image" />
-                </div>
-
-                <div className="ml-4">
-                  <h4 className="mb-2 font-medium text-sm">
-                    Raw Black T-Shirt Lineup
-                  </h4>
-
-                  <div className="flex items-center">
-                    <p className="mr-2 font-medium text-xs">Color:</p>
-                    <div className="w-3 h-3 bg-[#A8B2FF] rounded-full"></div>
-                    <p className="font-medium text-xs"> - Size: M</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex  items-center gap-[18px]">
-                <p className="font-medium text-sm">$22.00</p>
-                <div className="flex items-center border rounded-[4px] bg-neutral-100 w-[107px] h-[40px]">
-                  <button
-                    onClick={decrement}
-                    className="w-4 h-4 text-lg text-black flex items-center justify-center ml-4"
-                  >
-                    -
-                  </button>
-                  <span className="w-full text-center">{quantity}</span>
-                  <button
-                    onClick={increment}
-                    className="w-4 h-4 text-lg  text-black flex items-center justify-center mr-4"
-                  >
-                    +
-                  </button>
-                </div>
-                <div className="bg-[#F6F6F6] w-10 h-10 rounded-[4px] flex justify-center">
-                  <img src="/images/X.png" alt="img" />
-                </div>
-              </div>
-            </div>
+            {products.map((product, index) => (
+              <CartItem
+                key={index}
+                product={product}
+                quantity={quantities[index]}
+                increment={() => increment(index)}
+                decrement={() => decrement(index)}
+              />
+            ))}
           </div>
+
           <div className="w-[341px] h-[430px] flex flex-col justify-evenly p-[20px] border-2 border-[#E6E7E8] mt-[56px] ml-[122px] rounded-[4px]">
             <h4 className="text-[#0E1422] text-[16px] font-[600]">
               Order Summary
@@ -146,12 +129,11 @@ const Cart = () => {
               <span>Total</span>
               <span>$100.00</span>
             </div>
-           
-              
+            <a href="/checkout">
               <button className="w-full bg-[#0E1422] px-[24px] py-[12px] text-white rounded-[4px]">
                 Checkout
               </button>
-            
+            </a>
           </div>
         </div>
       </div>

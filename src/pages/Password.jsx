@@ -38,9 +38,11 @@ const Password = () => {
               class="border border-[#E6E7E8]  w-[320px] h-[45px]  text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
+          <a href="reset">
           <button className="bg-black w-[318px] h-[44px] mt-[24px] rounded text-white text-center font-medium text-sm">
           Send reset link
           </button>
+          </a>
         </div>
       </div>
     </div>

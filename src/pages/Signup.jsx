@@ -78,9 +78,11 @@ const Signup = () => {
           <button className="bg-black w-[318px] h-[44px] mt-[24px] rounded text-white text-center font-medium text-sm">
           Create account
           </button>
+          <a href='/login'>
           <p className="font-normal text-sm text-[#5C5F6A] mt-[24px] text-center">
           Already have an account? Log in
           </p>
+          </a>
         </div>
       </div>
       <Footer />

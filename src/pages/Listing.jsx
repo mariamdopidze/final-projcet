@@ -135,7 +135,7 @@ const Listing = () => {
 
                 <div
                   onClick={() => handleColorClick("yellow")}
-                  className={`w-[32px] h-[32px] rounded-full cursor-pointerbg-[#FFD58A] ${
+                  className={`w-[32px] h-[32px] rounded-full cursor-pointer bg-[#FFD58A] ${
                     selectedColor === "yellow" ? "ring-2 ring-black" : ""
                   }`}
                   style={{ backgroundColor: "#FFD58A" }}
@@ -148,10 +148,11 @@ const Listing = () => {
                   }`}
                   style={{ backgroundColor: "#83B18B" }}
                 ></div>
+
                 <div
                   onClick={() => handleColorClick("blue")}
-                  className={`w-[32px] h-[32px] rounded-full cursor-pointerbg-[#FFD58A] ${
-                    selectedColor === "yellow" ? "ring-2 ring-black" : ""
+                  className={`w-[32px] h-[32px] rounded-full cursor-pointer bg-[#4078FF] ${
+                    selectedColor === "blue" ? "ring-2 ring-black" : ""
                   }`}
                   style={{ backgroundColor: "#4078FF" }}
                 ></div>
