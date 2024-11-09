@@ -1,7 +1,29 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Dropdown = ({ isOpen, toggleDropdown }) => {
+const [categories, setCategories] = useState([])
+
+  const getCategoryData = async () => {
+    try {
+      const res = await fetch(
+        `https://fakestoreapi.com/products/categories`
+      );
+      const resData = await res.json();
+      
+      setCategories(resData)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  
+
+  useEffect(()=>{
+    getCategoryData()
+  }, [])
+
+
   return (
     <>
       <button
@@ -33,11 +55,11 @@ const Dropdown = ({ isOpen, toggleDropdown }) => {
           className="absolute top-full mt-2 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
         >
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-            {["Checkout", "Successful", "Failed", "Sign out"].map(
+            {categories.map(
               (item, index) => (
                 <li key={index}>
                   <a
-                    href={`/${item.toLowerCase()}`}
+                    href={`/listing?category=${item}`}
                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white transition duration-300"
                   >
                     {item}

@@ -36,7 +36,7 @@ const Main = () => {
             <img
               src="/images/Hero2.png"
               alt="Product"
-              className="absolute w-64 h-80 rounded-lg shadow-lg"
+              className="absolute w-64 h-80 rounded-lg"
             />
             <div className="w-80 h-80 bg-neutral-200 rounded-full"></div>
           </div>
@@ -112,41 +112,6 @@ const Main = () => {
       </div>
 
       <FeaturedAndBestSeling />
-
-      {/* <div className="flex items-center justify-center gap-6 mt-40">
-        <button className="w-24 h-8 border rounded-full font-medium text-sm">
-          Featured
-        </button>
-        <button className="text-sm font-normal w-24 h-8 border rounded-full">
-          Best Selling
-        </button>
-      </div>
-
-      <div>
-        <div className="grid grid-rows-1 grid-flow-col gap-4 max-w-[1116px] mx-auto mt-14">
-          {apiData.map((product, index) => (
-            <div key={index}>
-              <div className="w-60 h-80 bg-neutral-100 rounded overflow-hidden relative transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
-                <img
-                  src={product.image}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <p className="font-medium text-sm mt-3">{product.title}</p>
-                <div className="flex items-center">
-                  <button className="bg-white w-20 h-7 rounded-full border text-xs font-medium mt-3 text-center">
-                    {product.rating.count}
-                  </button>
-                  <div className="mt-3 ml-2 font-normal text-sm">
-                    {product.price}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div> */}
 
       <Footer />
     </div>

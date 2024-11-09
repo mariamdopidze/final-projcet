@@ -2,19 +2,44 @@ import React from "react";
 import Discount from "../components/Discount";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Listing = () => {
-  const items = [
-    { id: "1", label: "Trousers" },
-    { id: "2", label: "Shoe" },
-    { id: "3", label: "Handbag" },
-    { id: "4", label: "Hat" },
-    { id: "5", label: "Thermos" },
-    { id: "6", label: "Perfume" },
-  ];
-
   const [selectedColor, setSelectedColor] = useState("");
+  const [allCategories, setAllCategories] = useState([]);
+
+  const getAllCategory = async () => {
+    try {
+      const res = await fetch(
+        'https://fakestoreapi.com/products/categories'
+      );
+      const resData = await res.json();
+
+      setAllCategories(resData)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+ 
+  const [value, setValue] = useState("");
+ const navigate = useNavigate();
+ 
+
+  const onClickCategory = (item) => {
+    console.log (item)
+    navigate(`/listing?category=${item}`);
+  };
+
+  // const items = [
+  //   { id: "1", label: "Trousers" },
+  //   { id: "2", label: "Shoe" },
+  //   { id: "3", label: "Handbag" },
+  //   { id: "4", label: "Hat" },
+  //   { id: "5", label: "Thermos" },
+  //   { id: "6", label: "Perfume" },
+  // ];
 
   const handleColorClick = (color) => {
     setSelectedColor(color);
@@ -26,64 +51,29 @@ const Listing = () => {
     document.getElementById(`size-${size}`).click();
   };
 
-  const products = [
-    {
-      img: "/images/t-shirt-1.png",
-      title: "Classic Monochrome Tees",
-      stock: "IN STOCK",
-      price: "$ 35.00",
-    },
-    {
-      img: "/images/t-shirt-2.png",
-      title: "Monochromatic Wardrobe",
-      stock: "STOCK OUT",
-      price: "$ 27.00",
-    },
-    {
-      img: "/images/t-shirt-3.png",
-      title: "Essential Neutrals",
-      stock: "IN STOCK",
-      price: "$ 22.00",
-    },
-    {
-      img: "/images/t-shirt-4.png",
-      title: "UTRAANET Black",
-      stock: "IN STOCK",
-      price: "$ 47.00",
-    },
+  const [apiData, setApiData] = useState([]);
 
-    {
-      img: "/images/t-shirt-1.png",
-      title: "Classic Monochrome Tees",
-      stock: "IN STOCK",
-      price: "$ 35.00",
-    },
-    {
-      img: "/images/t-shirt-2.png",
-      title: "Monochromatic Wardrobe",
-      stock: "STOCK OUT",
-      price: "$ 27.00",
-    },
-    {
-      img: "/images/t-shirt-3.png",
-      title: "Essential Neutrals",
-      stock: "IN STOCK",
-      price: "$ 22.00",
-    },
-    {
-      img: "/images/t-shirt-4.png",
-      title: "UTRAANET Black",
-      stock: "IN STOCK",
-      price: "$ 47.00",
-    },
-    {
-      img: "/images/t-shirt-4.png",
-      title: "UTRAANET Black",
-      stock: "IN STOCK",
-      price: "$ 47.00",
-    },
-  ];
+  const getData = async () => {
+    try {
+      const response = await fetch("https://fakestoreapi.com/products?limit=9");
+      const resData = await response.json();
+      setApiData(resData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+  useEffect(() => {
+    getData();
+    getAllCategory()
+  }, []);
+
+  const pageNumbers = [1, 2, "...", 23, 24];
+  const [activePage, setActivePage] = useState(null);
+
+  const handleClick = (number) => {
+    setActivePage(number);
+  };
   return (
     <div>
       <Discount />
@@ -100,22 +90,25 @@ const Listing = () => {
             <h6 className="ml-5 mt-6 font-medium text-sm">Categories</h6>
 
             <ul className="w-48 text-sm font-medium text-gray-900 border-b border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white ml-5 mt-4">
-              {items.map((item) => (
+              {allCategories.map((item) => (
                 <li
+               
                   key={item.id}
                   className="w-full border-b border-gray-200 dark:border-gray-600"
                 >
                   <div className="flex items-center ps-3">
                     <input
+                   onChange={()=>onClickCategory(item)}
                       id={item.id}
-                      type="checkbox"
+                      type="radio"
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                     />
                     <label
+                   
                       htmlFor={item.id}
                       className="w-full py-3 ms-2 text-sm font-normal text-gray-900 dark:text-gray-300"
                     >
-                      {item.label}
+                      {item}
                     </label>
                   </div>
                 </li>
@@ -199,34 +192,40 @@ const Listing = () => {
           <div className=" List mt-8 ml-8">
             <h6 className="font-medium text-sm">Applied Filters:</h6>
             <div className="flex items-center mt-3 gap-3">
-              <button className="w-[111px] h-[36px] font-medium text-xs rounded-[100px] border text-center">
+              <button className="w-[111px] h-[36px] font-medium text-xs rounded-[100px] border text-center flex items-center justify-between px-3">
                 Perfume
                 <img
                   src="/images/X.png"
-                  alt="image"
+                  alt="remove"
                   className="w-[20px] h-[20px] bg-white inline-flex items-center justify-center ml-2"
                 />
               </button>
-              <button className="w-[104px] h-[36px] font-medium text-xs rounded-[100px] border ">
+              <button className="w-[111px] h-[36px] font-medium text-xs rounded-[100px] border text-center">
                 Size: M
               </button>
             </div>
+
             <div className="flex justify-between items-center mt-6">
               <p>Showing 1-9 of 36 results.</p>
               <p>Sort by</p>
             </div>
 
             <div class="grid grid-rows-3 grid-flow-col gap-4  mt-4">
-              {products.map((product, index) => (
+              {apiData.map((product, index) => (
+                 <Link key={index} to={`/product/${product.id}`}>
                 <div key={index}>
-                  <div className="w-60 h-80 bg-neutral-100 rounded">
-                    <img src={product.img} />
+                  <div className="w-60 h-80 bg-neutral-200 rounded flex items-center">
+                    <img src={product.image} className="w-40 h-40 mx-auto" />
                   </div>
                   <div>
                     <p className="font-medium text-sm mt-3">{product.title}</p>
                     <div className="flex items-center  mt-2 ">
                       <button className="bg-white text-center w-20 h-7 rounded-full border text-xs font-medium mt-3 items-center">
-                        {product.stock}
+                        {product.rating.count === 0
+                          ? "Out of Stock"
+                          : product.rating.count < 5
+                          ? "Low Stock"
+                          : "In Stock"}
                       </button>
                       <div className="mt-3 ml-2 font-normal text-sm text-center">
                         {product.price}
@@ -234,10 +233,81 @@ const Listing = () => {
                     </div>
                   </div>
                 </div>
+                </Link>
               ))}
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex  mx-auto max-w-[1116px]">
+        <nav aria-label="Page navigation example" className="mt-[34px] ">
+          <ul className="flex items-center space-x-1 h-8 text-sm justify-end">
+            <li>
+              <a
+                href="#"
+                className="flex items-center justify-center border-[#E9E9EB] px-3 h-8 leading-tight text-gray-500 bg-white hover:text-gray-700"
+              >
+                <span className="sr-only">Previous</span>
+                <svg
+                  className="w-2.5 h-2.5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 6 10"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 1 1 5l4 4"
+                  />
+                </svg>
+              </a>
+            </li>
+
+            {pageNumbers.map((number) => (
+              <li key={number}>
+                <a
+                  href="#"
+                  onClick={() => handleClick(number)}
+                  className={`flex items-center justify-center px-3 h-8 leading-tight ${
+                    activePage === number
+                      ? "text-[#0E1422] bg-[#F6F6F6] z-10"
+                      : "text-gray-500 bg-white hover:text-gray-700"
+                  }`}
+                  aria-current={activePage === number ? "page" : undefined}
+                >
+                  {number}
+                </a>
+              </li>
+            ))}
+
+            <li>
+              <a
+                href="#"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 hover:text-gray-700"
+              >
+                <span className="sr-only">Next</span>
+                <svg
+                  className="w-2.5 h-2.5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 6 10"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m1 9 4-4-4-4"
+                  />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
 
       <Footer />

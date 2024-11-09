@@ -7,7 +7,7 @@ import User from "./components/User";
 import Discount from "./components/Discount";
 import Main from "./pages/Main";
 import Footer from "./components/Footer";
-import ProductList from "./pages/ProductList";
+import ProductDetail from "./pages/ProductDetail";
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Listing from "./pages/Listing";
 import Cart from "./pages/Cart"
@@ -33,6 +33,7 @@ import Setting from "./pages/Setting";
 import Reviews from "./pages/Reviews";
 import Customers from "./pages/Customers";
 import About from "./pages/About";
+import Productreview from "./pages/Productreview";
 
 
 
@@ -43,7 +44,7 @@ function App() {
       <div>
        
        <Routes>
-          <Route path="/product" element={<ProductList/>}/>
+          <Route path="/product/:id" element={<ProductDetail/>}/>
           <Route path="/" element={<Main/>}/>
           <Route path="/listing" element={<Listing/>}/>
           <Route path="/cart" element={<Cart/>}/>
@@ -69,6 +70,7 @@ function App() {
           <Route path="/reviews" element={<Reviews/>}/>
           <Route path="/customers" element={<Customers/>}/>
           <Route path="/about" element={<About/>}/>
+          <Route path="/productreview" element={<Productreview/>}/>
 
         </Routes>
       </div>

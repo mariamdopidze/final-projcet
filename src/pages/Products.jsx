@@ -121,6 +121,7 @@ const Products = () => {
   ];
 
   const pageNumbers = [1, 2, "...", 23, 24];
+  
   return (
     <div>
       <div className=" flex">

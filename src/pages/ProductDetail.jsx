@@ -1,7 +1,8 @@
 import Discount from "../components/Discount";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -9,9 +10,30 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import { Pagination } from "swiper/modules";
+import { useParams } from "react-router-dom";
 
-const ProductList = () => {
+const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
+  const { id } = useParams();
+  const [apiData, setApiData] = useState([]);
+
+  const [detailsData, setDetailsData] = useState({});
+
+  const getData = async () => {
+    try {
+      const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+      const resData = await response.json();
+      setDetailsData(resData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  console.log(detailsData);
 
   const increment = () => {
     setQuantity(quantity + 1);
@@ -29,32 +51,19 @@ const ProductList = () => {
     setSelectedColor(color);
   };
 
-  const products = [
-    {
-      img: "/images/t-shirt-1.png",
-      title: "Classic Monochrome Tees",
-      stock: "IN STOCK",
-      price: "$ 35.00",
-    },
-    {
-      img: "/images/t-shirt-2.png",
-      title: "Monochromatic Wardrobe",
-      stock: "STOCK OUT",
-      price: "$ 27.00",
-    },
-    {
-      img: "/images/t-shirt-3.png",
-      title: "Essential Neutrals",
-      stock: "IN STOCK",
-      price: "$ 22.00",
-    },
-    {
-      img: "/images/t-shirt-4.png",
-      title: "UTRAANET Black",
-      stock: "IN STOCK",
-      price: "$ 47.00",
-    },
-  ];
+  const getDataproduct = async () => {
+    try {
+      const response = await fetch("https://fakestoreapi.com/products?limit=4");
+      const resData = await response.json();
+      setApiData(resData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getDataproduct();
+  }, []);
 
   const handleProductClick = (product) => {
     alert(`Viewing details for: ${product.title}`);
@@ -106,19 +115,7 @@ const ProductList = () => {
               <Swiper pagination={true} modules={[Pagination]}>
                 <SwiperSlide>
                   <img
-                    src="/images/t-shirt-4.png"
-                    className="mx-auto pt-20 w-[288px] h-[404px]"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="/images/t-shirt-4.png"
-                    className="mx-auto pt-20 w-[288px] h-[404px]"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="/images/t-shirt-4.png"
+                    src={detailsData.image}
                     className="mx-auto pt-20 w-[288px] h-[404px]"
                   />
                 </SwiperSlide>
@@ -126,9 +123,7 @@ const ProductList = () => {
             </div>
             <div className="flex flex-col items-start mr-30 w-[438px] h-[562px] ">
               <div className="flex items-center">
-                <h3 className="font-bold text-2xl ">
-                  Raw Black T-Shirt Lineup
-                </h3>
+                <h3 className="font-bold text-2xl ">{detailsData.title}</h3>
                 <img
                   src="/images/Vector.png"
                   className="w-[16px] h-[18px] mt-3 ml-[119px]"
@@ -145,7 +140,7 @@ const ProductList = () => {
                     alt="Rating Star"
                     className="w-[16px] h-[15px]"
                   />
-                  <span className="ml-[8px]">4.2 — 54 Reviews</span>
+                  <span className="ml-[8px]">- Reviews</span>
                 </button>
 
                 <button
@@ -157,7 +152,7 @@ const ProductList = () => {
                 </button>
               </div>
               <h4 className="font-semibold text-lg mt-[24px] text-[#0E1422]">
-                $75.00
+                {detailsData.price}
               </h4>
 
               <div className="flex flex-col ">
@@ -332,7 +327,7 @@ const ProductList = () => {
             >
               Details
             </button>
-
+<a href="/productreview">
             <button
               onClick={() => handleButtonClick("Reviews")}
               className={`w-[241px] h-[41px] rounded-[8px] text-sm font-medium transition-colors duration-300 ${
@@ -343,6 +338,7 @@ const ProductList = () => {
             >
               Reviews
             </button>
+            </a>
           </div>
 
           <div className="flex flex-col ml-8 mt-44">
@@ -373,33 +369,31 @@ const ProductList = () => {
         <div className="flex mx-auto max-w-[1116px]">
           <div>
             <div className="grid grid-rows-1 grid-flow-col gap-4 max-w-[1116px] mx-auto mt-20">
-              {products.map((product, index) => (
-                <div
-                  key={index}
-                  className="group cursor-pointer"
-                  onClick={() => handleProductClick(product)}
-                >
-                  <div className="w-60 h-80 bg-neutral-100 rounded overflow-hidden transition-transform duration-300 transform group-hover:scale-105">
-                    <img
-                      src={product.img}
-                      alt={product.title}
-                      className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-90"
-                    />
-                  </div>
-
-                  <div>
-                    <p className="font-medium text-sm mt-3">{product.title}</p>
-                    <div className="flex items-center mt-2">
-                      <button className="bg-white text-center w-20 h-7 rounded-full border text-xs font-medium mt-3 items-center transition duration-300 hover:bg-neutral-200">
-                        {product.stock}
-                      </button>
-
-                      <div className="mt-3 ml-2 font-normal text-sm text-center">
-                        {product.price}
+              {apiData.map((product, index) => (
+                <Link key={index} to={`/product/${product.id}`}>
+                  <div className="text-center">
+                    <div className="w-[237px] h-[312px] bg-[#F6F6F6] rounded overflow-hidden relative transition-transform transform hover:scale-105 hover:shadow-lg duration-300 mx-auto flex items-center justify-center">
+                      <img
+                        src={product.image}
+                        className="w-40 h-40 object-contain"
+                        alt={product.title}
+                      />
+                    </div>
+                    <div className="mt-3">
+                      <p className="font-medium text-sm">{product.title}</p>
+                      <div className="mt-2">
+                        <button className="bg-white w-20 h-7 rounded-full border text-xs font-medium">
+                          {product.rating.count === 0
+                            ? "Out of Stock"
+                            : "In Stock"}
+                        </button>
+                        <div className="mt-3 ml-2 font-normal text-sm inline-block">
+                          {product.price}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -410,4 +404,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default ProductDetail;
