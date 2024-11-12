@@ -47,6 +47,7 @@ function App() {
           <Route path="/product/:id" element={<ProductDetail/>}/>
           <Route path="/" element={<Main/>}/>
           <Route path="/listing" element={<Listing/>}/>
+          <Route path="/listing/:category" element={<Listing/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/checkout" element={<Checkout/>}/>
           <Route path="/successful" element={<Successful/>}/>

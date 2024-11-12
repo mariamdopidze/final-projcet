@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import Discount from "../components/Discount";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 const Account = () => {
+  const [fullname, setFullName] = useState("");
+
+  const [email, setEmail] = useState("");
+  const OnsubmitForm = (e) => {
+    e.preventDefault();
+
+    fetch("https://fakestoreapi.com/users/6", {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+  };
+
+  const onFullNameChange = (e) => {
+    setFullName(e.target.value);
+  };
+
+  const onEmailchange = (e) => {
+    setEmail(e.target.value);
+  };
+
   const menu = [
     {
       icon: "Cart.png",
@@ -63,43 +84,39 @@ const Account = () => {
           <hr className="w-[1px] h-[504px] bg-[#E6E7E8] mt-[60px] ml-[36px]" />
 
           <div className="mt-[64px] ml-[48px] font-semibold text-base">
-            <span className="font-semibold text-base">Shipping Address</span>
+            <span className="font-semibold text-base">Account Details</span>
             <div className="w-[48px] h-[48px] rounded-full bg-[#F0F1FF] mt-[40px] flex items-center justify-center">
-              <span className="text-center font-normal text-sm text-[#4078FF]">AN</span>
+              <span className="text-center font-normal text-sm text-[#4078FF]">
+                AN
+              </span>
             </div>
 
-            <form>
+            <form onSubmit={OnsubmitForm}>
               <div>
-                <label
-                  for="last_name"
-                  class="block mb-2 text-sm  mt-[32px] font-medium text-gray-900 dark:text-white"
-                >
+                <label class="block mb-2 text-sm  mt-[32px] font-medium text-gray-900 dark:text-white">
                   Full name
                 </label>
                 <input
                   type="text"
-                  id="Full name"
+                  onChange={onFullNameChange}
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[259px] h-[44px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
               </div>
               <div>
-                <label
-                  for="Email"
-                  class="block mb-2  mt-[16px] text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  City
+                <label class="block mb-2  mt-[16px] text-sm font-medium text-gray-900 dark:text-white">
+                  Email
                 </label>
                 <input
                   type="email"
-                  id="Email"
+                  onChange={onEmailchange}
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[259px] h-[44px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
               </div>
 
               <button
-                type=""
+                type="submit"
                 class="text-white bg-[#0E1422] mt-[64px]  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-[144px] h-[44px]  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Save Changes

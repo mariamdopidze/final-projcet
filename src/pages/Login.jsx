@@ -16,13 +16,13 @@ const Login = () => {
     fetch("https://fakestoreapi.com/auth/login", {
       method: "POST",
       headers: {
-        Accept: "application/json",
-        "Content=Type": "application/json",
+        'Accept': "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         username: userName,
         password: password
-      }),
+      })
     })
       .then((res) => res.json())
       .then((json) => {
@@ -31,6 +31,8 @@ const Login = () => {
         alert("წარმატებულია");
       })
       .catch((err) => {
+        console.log(err);
+        
         alert("მომხმარებელი ვერ მოიძებნა");
         setIsLoading(false);
       });

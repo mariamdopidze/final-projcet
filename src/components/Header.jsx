@@ -59,7 +59,7 @@ const [categories, setCategories] = useState([])
               (item, index) => (
                 <li key={index}>
                   <a
-                    href={`/listing?category=${item}`}
+                    href={`/listing/${item}`}
                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white transition duration-300"
                   >
                     {item}
