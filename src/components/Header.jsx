@@ -1,28 +1,24 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Dropdown = ({ isOpen, toggleDropdown }) => {
-const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState([]);
 
   const getCategoryData = async () => {
     try {
-      const res = await fetch(
-        `https://fakestoreapi.com/products/categories`
-      );
+      const res = await fetch(`https://fakestoreapi.com/products/categories`);
       const resData = await res.json();
-      
-      setCategories(resData)
+
+      setCategories(resData);
     } catch (error) {
       console.log(error);
     }
   };
 
-  
-
-  useEffect(()=>{
-    getCategoryData()
-  }, [])
-
+  useEffect(() => {
+    getCategoryData();
+  }, []);
 
   return (
     <>
@@ -55,18 +51,16 @@ const [categories, setCategories] = useState([])
           className="absolute top-full mt-2 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
         >
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-            {categories.map(
-              (item, index) => (
-                <li key={index}>
-                  <a
-                    href={`/listing/${item}`}
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white transition duration-300"
-                  >
-                    {item}
-                  </a>
-                </li>
-              )
-            )}
+            {categories.map((item, index) => (
+              <li key={index}>
+                <a
+                  href={`/listing/${item}`}
+                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white transition duration-300"
+                >
+                  {item}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       )}
@@ -77,6 +71,8 @@ const [categories, setCategories] = useState([])
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [value, setValue] = useState("");
+  const isAuth = Cookies.get("AccessToken");
+ 
 
   const toggleDropdown = useCallback(() => {
     setIsDropdownOpen((prev) => !prev);
@@ -96,6 +92,15 @@ const Header = () => {
     { src: "/images/User.png", alt: "user", link: "/signup" },
   ];
 
+  const logout = () => {
+    Cookies.remove("AccessToken");
+    window.location.reload();
+    alert("წარმატებულია");
+  };
+
+ 
+
+ 
   return (
     <header className="h-20 flex items-center justify-between max-w-[1116px] mx-auto">
       <div className="flex items-center gap-2">
@@ -167,6 +172,12 @@ const Header = () => {
           )
         )}
       </div>
+
+      {isAuth ? (
+        <button onClick={logout}>
+          <img src="images/Logout.png" alt="image" />
+        </button>
+      ) : null}
     </header>
   );
 };

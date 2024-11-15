@@ -11,18 +11,18 @@ const Login = () => {
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    setIsLoading(true)
+    setIsLoading(true);
 
     fetch("https://fakestoreapi.com/auth/login", {
       method: "POST",
       headers: {
-        'Accept': "application/json",
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         username: userName,
-        password: password
-      })
+        password: password,
+      }),
     })
       .then((res) => res.json())
       .then((json) => {
@@ -32,7 +32,7 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err);
-        
+
         alert("მომხმარებელი ვერ მოიძებნა");
         setIsLoading(false);
       });

@@ -1,6 +1,70 @@
 import React from "react";
+import { useState } from "react";
 
 const Addproduct = () => {
+  const [title, setTitle] = useState([])
+  const [price, setPrice] = useState([])
+  const [description, setDescription] = useState([])
+  const [image, setImage] = useState([])
+  const [categories, setCategories] = useState([])
+
+
+const getAddProduct =()=>{
+  fetch('https://fakestoreapi.com/products',{
+    method:"POST",
+
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body:JSON.stringify(
+        {
+            title: 'test product',
+            price: 13.5,
+            description: 'lorem ipsum set',
+            image: 'https://i.pravatar.cc',
+            category: 'electronic'
+        }
+    )
+})
+    .then(res=>res.json())
+    .then(json=>console.log(json))
+
+}
+
+const onTitle = (e) => {
+  setTitle(e.target.value);
+};
+
+const onPrice = (e) => {
+  setPrice(e.target.value);
+};
+const onDescription = (e) => {
+  setDescription(e.target.value);
+};
+
+const onImage = (e) => {
+  setImage(e.target.value);
+};
+const oncategories = (e) => {
+  setCategories(e.target.value);
+};
+
+
+const inputs = [
+  { label: "Title", value: title, onChange: onTitle},
+  { label: "Price", value: price, onChange: onPrice },
+  { label: "Category", value: categories, onChange: oncategories },
+  { label: "SKU" },
+  { label: "Add Members"  },
+];
+
+const rinput = [
+  { label: "Stock status" },
+  { label: "Available quantity" },
+  { label: "Images", placeholder: "Type here...", value: image, onChange: onImage },
+];
+
   const menu = [
     {
       icon: "Dashboard.svg",
@@ -28,19 +92,7 @@ const Addproduct = () => {
     },
   ];
 
-  const inputs = [
-    { label: "Title" },
-    { label: "Price" },
-    { label: "Category" },
-    { label: "SKU" },
-    { label: "Add Members" },
-  ];
-
-  const rinput = [
-    { label: "Stock status" },
-    { label: "Available quantity" },
-    { label: "Images", placeholder: "Type here..." },
-  ];
+ 
   const images = [
     {
       image: "proditem2.png",
@@ -140,11 +192,19 @@ const Addproduct = () => {
                     <label className="block mb-2 text-sm font-medium text-slate-600">
                       Message
                     </label>
-                    <textarea className="resize-none rounded-[6px] w-[320px] h-[128px] border border-[#E6E7E8] bg-transparent px-3 py-2.5 text-sm font-normal text-slate-700 focus:border-2 focus:border-slate-400  hover:border-slate-300 transition-shadow"></textarea>
+                    <textarea 
+                    onChange={onDescription}
+                    className="resize-none rounded-[6px] w-[320px] h-[128px] border border-[#E6E7E8] bg-transparent px-3 py-2.5 text-sm font-normal text-slate-700 focus:border-2 focus:border-slate-400  hover:border-slate-300 transition-shadow"></textarea>
+                    
+                 
                   </div>
+
+
                 </div>
 
-                <button className="bg-black text-white px-4 py-2 mt-[51px] rounded-[4px] w-[138px] h-[44px]">
+                <button
+                onClick={getAddProduct}
+                className="bg-black text-white px-4 py-2 mt-[51px] rounded-[4px] w-[138px] h-[44px]">
                 Save Product
                 </button>
               </div>
