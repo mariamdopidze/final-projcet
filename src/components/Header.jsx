@@ -115,10 +115,10 @@ const Header = () => {
       <div className="sm:ml-6">
         <div className="flex items-center space-x-4 relative">
           <a
-            href="/product"
+            href="/order"
             className="px-3 py-2 text-sm font-medium hover:text-blue-500 transition duration-300"
           >
-            Product
+            Orders
           </a>
 
           <Dropdown isOpen={isDropdownOpen} toggleDropdown={toggleDropdown} />

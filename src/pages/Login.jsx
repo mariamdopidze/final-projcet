@@ -111,9 +111,11 @@ const Login = () => {
             >
               {isLoading ? "Loading..." : "Login"}
             </button>
+            < a href="/signup">
             <p className="font-normal text-sm text-[#5C5F6A] mt-[24px] text-center">
               Don't have an account? Sign up
             </p>
+            </a>
           </form>
         </div>
       </div>

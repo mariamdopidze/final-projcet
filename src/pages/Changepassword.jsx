@@ -2,6 +2,7 @@ import React from "react";
 import Discount from "../components/Discount";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 const Changepassword = () => {
   const menu = [
@@ -49,14 +50,14 @@ const Changepassword = () => {
         <div className="max-w-[1116px] mx-auto  flex  justify-start">
           <div className="w-[212px] mt-[120px]">
             {menu.map((item, key) => (
-              <button className="block my-2 w-full hover:bg-gray-300 rounded-lg transition-all duration-300 text-start px-3">
+              <Link to className="block my-2 w-full hover:bg-gray-300 rounded-lg transition-all duration-300 text-start px-3" >
                 <img
                   src={`/images/${item.icon}`}
                   className="inline py-3"
                   alt="img"
                 />
                 <span className="ml-2">{item.title}</span>
-              </button>
+              </Link>
             ))}
           </div>
 

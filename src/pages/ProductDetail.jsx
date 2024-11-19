@@ -19,6 +19,8 @@ const ProductDetail = () => {
   const [apiData, setApiData] = useState([]);
 
   const [detailsData, setDetailsData] = useState({});
+  const [addCart, setAddCart] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const getData = async () => {
     try {
@@ -29,6 +31,35 @@ const ProductDetail = () => {
       console.log(error);
     }
   };
+
+
+
+
+  const AddedToCart =async ()=> {
+    setLoading(true)
+
+    fetch('https://fakestoreapi.com/carts',{
+      method:"POST",
+
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body:JSON.stringify(
+          {
+              userId:5,
+              date:2024-11-18,
+              products:[{productId:5,quantity:1},{productId:1,quantity:5}]
+          }
+      )
+  })
+      .then(res=>res.json())
+      .then(json=>console.log(json))
+      setLoading(false);
+
+  }
+
+
 
   useEffect(() => {
     getData();
@@ -64,7 +95,12 @@ const ProductDetail = () => {
 
   useEffect(() => {
     getDataproduct();
+  
   }, []);
+
+  const onClickButton = (e) => {
+    setAddCart(e.target.value);
+  }
 
   const handleProductClick = (product) => {
     alert(`Viewing details for: ${product.title}`);
@@ -315,11 +351,11 @@ const ProductDetail = () => {
 
                 <div className="flex space-x-4 mt-10">
                   <button
-                    onClick={handleAddToCart}
+                    onClick={AddedToCart}
                     className="w-[284px] h-[44px] rounded-[4px] bg-black text-white font-medium text-sm flex items-center justify-center transition duration-300 hover:bg-neutral-800"
-                    disabled={isAdded}
+                    disabled={loading}
                   >
-                    {isAdded ? "Adding..." : "Add to cart"}
+                    { loading ? "Adding..." : "Add to cart"}
                   </button>
 
                   <button
@@ -472,7 +508,7 @@ const ProductDetail = () => {
       </div>
       <Footer />
     </div>
-  );
+  )
 };
 
 export default ProductDetail;

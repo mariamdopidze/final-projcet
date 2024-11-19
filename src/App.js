@@ -33,7 +33,7 @@ import Setting from "./pages/Setting";
 import Reviews from "./pages/Reviews";
 import Customers from "./pages/Customers";
 import About from "./pages/About";
-import Productreview from "./pages/Productreview";
+
 
 
 
@@ -71,7 +71,7 @@ function App() {
           <Route path="/reviews" element={<Reviews/>}/>
           <Route path="/customers" element={<Customers/>}/>
           <Route path="/about" element={<About/>}/>
-          <Route path="/productreview" element={<Productreview/>}/>
+        
 
         </Routes>
       </div>

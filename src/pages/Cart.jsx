@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Discount from "../components/Discount";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -49,6 +49,41 @@ const CartItem = ({ product, quantity, increment, decrement }) => (
 
 const Cart = () => {
   const [quantities, setQuantities] = useState([1, 1]);
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const getAllProductsAndUserCart = async () => {
+    setIsLoading(true);
+    try {
+      const products_res = await fetch("https://fakestoreapi.com/products");
+      const products_data = await products_res.json();
+
+      const cart_res = await fetch("https://fakestoreapi.com/carts/5");
+      const cart_products = await cart_res.json();
+
+      let cart_products_data = [];
+
+      for (let index = 0; index < cart_products.products.length; index++) {
+        const element = cart_products.products[index];
+
+        products_data.find((product) => {
+          if (product.id === element.productId) {
+            cart_products_data.push(product);
+          }
+        });
+      }
+
+      setProducts(cart_products_data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getAllProductsAndUserCart();
+  }, []);
 
   const increment = (index) => {
     setQuantities(quantities.map((q, i) => (i === index ? q + 1 : q)));
@@ -57,23 +92,6 @@ const Cart = () => {
   const decrement = (index) => {
     setQuantities(quantities.map((q, i) => (i === index && q > 1 ? q - 1 : q)));
   };
-
-  const products = [
-    {
-      image: "/images/Product.png",
-      title: "Raw Black T-Shirt Lineup",
-      color: "#98BE9E",
-      size: "M",
-      price: 75.0,
-    },
-    {
-      image: "/images/Product.png",
-      title: "Raw Black T-Shirt Lineup",
-      color: "#A8B2FF",
-      size: "M",
-      price: 22.0,
-    },
-  ];
 
   return (
     <div>
@@ -95,6 +113,7 @@ const Cart = () => {
         <div className="flex flex-row">
           <div>
             <h6 className="text-base font-semibold pt-20">Your Cart</h6>
+            {isLoading && <p className="text-2xl text-red-600">Loading...</p>}
             <hr className="mt-[18px] w-[628px] bg-[#E9E9EB]" />
 
             {products.map((product, index) => (

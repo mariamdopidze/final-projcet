@@ -2,10 +2,37 @@ import React from "react";
 import Discount from "../components/Discount";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 const Order = () => {
+  const menu = [
+    {
+      icon: "Cart.png",
+      title: "Order",
+     
+    },
+    {
+      icon: "Heart.png",
+      title: "Wishlist",
+    },
+    {
+      icon: "Vector (2).png",
+      title: "Address",
+    },
+    {
+      icon: "Key.png",
+      title: "Password",
+    },
+    {
+      icon: "User (1).png",
+      title: "Account Detail",
+    },
+    {
+      icon: "Logout.png",
+      title: "Logout",
+    },
+  ];
 
-  
   return (
     <div>
       <Discount />
@@ -23,32 +50,24 @@ const Order = () => {
 
       <div className="w-full">
         <div className="max-w-[1116px] mx-auto  flex  justify-start">
-          <div className="max-w-[212px] flex flex-col items-start mt-[120px]   ">
-            <button className="w-[212px] h-[41px] rounded  bg-[#F6F6F6] flex items-center justify-center text-center gap-[10px]">
-              <img src="/images/Cart.png" className=" " alt="img" />
-              Orders
-            </button>
-            <button className="w-[212px] h-[41px] rounded  focus:bg-[#F6F6F6] mt-[16px] flex items-center justify-center text-center gap-[10px] ">
-              <img src="/images/Heart.png" alt="img" />
-              Wishlist
-            </button>
-            <button className="w-[212px] h-[41px] rounded  focus:bg-[#F6F6F6] mt-[16px] flex items-center justify-center text-center gap-[10px]">
-              <img src="/images/Vector (2).png" alt="img" />
-              Address
-            </button>
-            <button className="w-[212px] h-[41px] rounded  focus:bg-[#F6F6F6] mt-[16px] flex items-center justify-center text-center gap-[10px]">
-              <img src="/images/Key.png" alt="img" />
-              Password
-            </button>
-            <button className="w-[212px] h-[41px] rounded  focus:bg-[#F6F6F6] mt-[16px] flex items-center justify-center text-center gap-[10px] ">
-              <img src="/images/User (1).png" alt="img" />
-              Account Detail
-            </button>
-            <button className="w-[212px] h-[41px] rounded focus:bg-[#F6F6F6] mt-[16px] flex items-center justify-center text-center gap-[10px]">
-              <img src="/images/Logout.png" alt="img" />
-              Logout
-            </button>
+          <div className="w-[212px] mt-[120px]">
+            {menu.map((item, key) => (
+              <Link
+                to={`/wishlist`}
+                className="block my-2 w-full hover:bg-gray-300 rounded-lg transition-all duration-300 text-start px-3"
+               
+
+              >
+                <img
+                  src={`/images/${item.icon}`}
+                  className="inline py-3"
+                  alt="img"
+                />
+                <span className="ml-2">{item.title}</span>
+              </Link>
+            ))}
           </div>
+
           <div className="w-[1px] h-[504px] bg-[#E6E7E8] mt-[60px] ml-[36px]"></div>
           <div className="flex flex-col mt-[64px] ml-[48px]">
             <h3 className="font-semibold text-base">Orders</h3>
@@ -64,7 +83,9 @@ const Order = () => {
                     Raw Black T-Shirt Lineup
                   </h4>
 
-                  <p className="font-medium text-xs mb-2">Ordered on: 27 July 2023</p>
+                  <p className="font-medium text-xs mb-2">
+                    Ordered on: 27 July 2023
+                  </p>
                   <p className="font-medium text-xs">$70.00</p>
                 </div>
               </div>
@@ -76,9 +97,8 @@ const Order = () => {
                   View item
                 </button>
               </div>
-              
             </div>
-            <hr className="h-[1px] w-[617px] bg-[#E9E9EB] mt-[32px]"/>
+            <hr className="h-[1px] w-[617px] bg-[#E9E9EB] mt-[32px]" />
             <div className="h-[80px] w-[617px] mt-[56px] flex items-center justify-between">
               <div className="flex">
                 <div className="w-[80px] h-[80px] rounded-[4px] flex justify-center items-center  bg-[#F6F6F6]">
@@ -90,7 +110,9 @@ const Order = () => {
                     Raw Black T-Shirt Lineup
                   </h4>
 
-                  <p className="font-medium text-xs mb-2">Ordered on: 9 march 2023</p>
+                  <p className="font-medium text-xs mb-2">
+                    Ordered on: 9 march 2023
+                  </p>
                   <p className="font-medium text-xs">$27.00</p>
                 </div>
               </div>
@@ -102,7 +124,6 @@ const Order = () => {
                   View item
                 </button>
               </div>
-              
             </div>
           </div>
         </div>
