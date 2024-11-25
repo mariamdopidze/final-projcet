@@ -3,25 +3,25 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-
+import Addedcart from "../components/Addedcart";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/pagination";
-
 import { Pagination } from "swiper/modules";
 import { useParams } from "react-router-dom";
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
+import Tabdetail from "../components/Tabdetail";
+
+
+
 
 const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const { id } = useParams();
   const [apiData, setApiData] = useState([]);
-
   const [detailsData, setDetailsData] = useState({});
-  const [addCart, setAddCart] = useState([])
-  const [loading, setLoading] = useState(false)
 
+
+  
   const getData = async () => {
     try {
       const response = await fetch(`https://fakestoreapi.com/products/${id}`);
@@ -31,35 +31,6 @@ const ProductDetail = () => {
       console.log(error);
     }
   };
-
-
-
-
-  const AddedToCart =async ()=> {
-    setLoading(true)
-
-    fetch('https://fakestoreapi.com/carts',{
-      method:"POST",
-
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body:JSON.stringify(
-          {
-              userId:5,
-              date:2024-11-18,
-              products:[{productId:5,quantity:1},{productId:1,quantity:5}]
-          }
-      )
-  })
-      .then(res=>res.json())
-      .then(json=>console.log(json))
-      setLoading(false);
-
-  }
-
-
 
   useEffect(() => {
     getData();
@@ -95,18 +66,12 @@ const ProductDetail = () => {
 
   useEffect(() => {
     getDataproduct();
-  
   }, []);
-
-  const onClickButton = (e) => {
-    setAddCart(e.target.value);
-  }
 
   const handleProductClick = (product) => {
     alert(`Viewing details for: ${product.title}`);
   };
 
-  const [isFavorite, setIsFavorite] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
 
   const handleAddToCart = () => {
@@ -115,10 +80,6 @@ const ProductDetail = () => {
     setTimeout(() => {
       setIsAdded(false);
     }, 2000);
-  };
-
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
   };
 
   const handleReviewsClick = () => {
@@ -137,35 +98,7 @@ const ProductDetail = () => {
     alert(`You clicked ${buttonName}`);
   };
 
-  const reviews = [
-    {
-      id: 1,
-      initials: "Ed",
-      name: "Emily Davis",
-      ratingImage: "/images/fiveStar.png",
-      date: "1 Week ago",
-      reviewText:
-        "This company always goes above and beyond to satisfy their customers.",
-    },
-    {
-      id: 2,
-      initials: "Ed",
-      name: "Emily Davis",
-      ratingImage: "/images/fiveStar.png",
-      date: "1 Week ago",
-      reviewText:
-        "This company always goes above and beyond to satisfy their customers.",
-    },
-    {
-      id: 3,
-      initials: "Ed",
-      name: "Emily Davis",
-      ratingImage: "/images/fiveStar.png",
-      date: "1 Week ago",
-      reviewText:
-        "This company always goes above and beyond to satisfy their customers.",
-    },
-  ];
+  const sizes = ["S", "M", "L", "XL", "XXL"];
 
   return (
     <div>
@@ -256,76 +189,23 @@ const ProductDetail = () => {
 
                 <h6 className="mt-4 text-xs font-medium">Select Size</h6>
                 <div class="flex mt-2.5">
-                  <div class="flex items-center me-4">
-                    <input
-                      id="size-s"
-                      type="checkbox"
-                      value="S"
-                      class="hidden"
-                    />
-                    <label
-                      for="size-s"
-                      class="w-10 h-10 flex items-center justify-center text-black bg-gray-100 border-gray-300 rounded cursor-pointer"
-                    >
-                      S
-                    </label>
-                  </div>
-                  <div class="flex items-center me-4">
-                    <input
-                      id="size-s"
-                      type="checkbox"
-                      value="S"
-                      class="hidden"
-                    />
-                    <label
-                      for="size-s"
-                      class="w-10 h-10 flex items-center justify-center text-black bg-gray-100 border-gray-300 rounded cursor-pointer"
-                    >
-                      M
-                    </label>
-                  </div>
-                  <div class="flex items-center me-4">
-                    <input
-                      id="size-s"
-                      type="checkbox"
-                      value="S"
-                      class="hidden"
-                    />
-                    <label
-                      for="size-s"
-                      class="w-10 h-10 flex items-center justify-center text-black bg-gray-100 border-gray-300 rounded cursor-pointer"
-                    >
-                      L
-                    </label>
-                  </div>
-                  <div class="flex items-center me-4">
-                    <input
-                      id="size-s"
-                      type="checkbox"
-                      value="S"
-                      class="hidden"
-                    />
-                    <label
-                      for="size-s"
-                      class="w-10 h-10 flex items-center justify-center text-black bg-gray-100 border-gray-300 rounded cursor-pointer"
-                    >
-                      XL
-                    </label>
-                  </div>
-                  <div class="flex items-center me-4">
-                    <input
-                      id="size-s"
-                      type="checkbox"
-                      value="2XL"
-                      class="hidden"
-                    />
-                    <label
-                      for="size-s"
-                      class="w-10 h-10 flex items-center justify-center text-black bg-gray-100 border-gray-300 rounded cursor-pointer"
-                    >
-                      XXL
-                    </label>
-                  </div>
+                  {sizes.map((size, index) => (
+                    <div key={index} className="flex items-center me-4">
+                      <input
+                        id={`size-${size}`}
+                        type="checkbox"
+                        value={size}
+                        className="hidden"
+                      />
+
+                      <label
+                        htmlFor={`size-${size}`}
+                        className="w-10 h-10 flex items-center justify-center text-black bg-gray-100 border-gray-300 rounded cursor-pointer"
+                      >
+                        {size}
+                      </label>
+                    </div>
+                  ))}
                 </div>
 
                 <div className="mt-4">
@@ -348,124 +228,14 @@ const ProductDetail = () => {
                     </div>
                   </div>
                 </div>
-
-                <div className="flex space-x-4 mt-10">
-                  <button
-                    onClick={AddedToCart}
-                    className="w-[284px] h-[44px] rounded-[4px] bg-black text-white font-medium text-sm flex items-center justify-center transition duration-300 hover:bg-neutral-800"
-                    disabled={loading}
-                  >
-                    { loading ? "Adding..." : "Add to cart"}
-                  </button>
-
-                  <button
-                    onClick={toggleFavorite}
-                    className={`w-[43px] h-[43px] rounded-[4px] border-2 ${
-                      isFavorite ? "border-red-500" : "border-neutral-100"
-                    } flex items-center justify-center transition duration-300`}
-                    aria-label="Add to favorites"
-                  >
-                    <img
-                      src={isFavorite ? "/images/Add.svg" : "/images/Heart.png"}
-                      alt="Favorite"
-                      className="w-[17px] h-[14px]"
-                    />
-                  </button>
-                </div>
-
-                <p className="font-medium taxt-xs mt-3">
-                  — Free shipping on orders $100+
-                </p>
+                <Addedcart />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="bg-white">
-        <div className="flex mx-auto max-w-[1116px]">
-          <TabGroup className="flex">
-            <TabList className="flex flex-col space-y-4 mt-60">
-              <Tab className="w-[241px] h-[41px] rounded-[8px] text-sm font-medium transition-colors duration-300 bg-[#F6F6F6]">
-                Details
-              </Tab>
-              <Tab className="w-[241px] h-[41px] rounded-[8px] text-sm font-medium transition-colors duration-300  bg-[#F6F6F6]">
-                Reviews
-              </Tab>
-            </TabList>
+      <Tabdetail />
 
-            <TabPanels>
-              <TabPanel>
-                <div className="flex flex-col ml-8 mt-44">
-                  <h4 className="w-[45px] h-[19px] font-semibold text-base">
-                    Detail
-                  </h4>
-                  <p className="font-normal text-sm mt-6 max-w-[727px] ">
-                    Elevate your everyday style with our Men's Black T-Shirts,
-                    the ultimate wardrobe essential for modern men. Crafted with
-                    meticulous attention to detail and designed for comfort,
-                    these versatile black tees are a must-have addition to your
-                    collection. The classic black color never goes out of style.
-                    Whether you're dressing up for a special occasion or keeping
-                    it casual, these black t-shirts are the perfect choice,
-                    effortlessly complementing any outfit.
-                  </p>
-
-                  <ul className="mt-14 font-normal text-sm space-y-2">
-                    <li>Premium Quality</li>
-                    <li>Versatile Wardrobe Staple</li>
-                    <li>Available in Various Sizes</li>
-                    <li>Tailored Fit</li>
-                  </ul>
-                </div>
-              </TabPanel>
-              <TabPanel>
-                <div className="flex flex-col ml-8 mt-[176px]">
-                  <div className="border-b border-[#E9E9EB] flex items-center justify-between p-2 ">
-                    <div>
-                      <div className="w-[45px] h-[19px] font-semibold text-base">
-                        Reviews
-                      </div>
-                      <div className="flex items-center space-x-2 mt-[16px]">
-                        <h4>4.2</h4>
-                        <span>— 54 Reviews</span>
-                      </div>
-                      <button className="w-[144px] h-[44px] border rounded border-[#0E1422] mt-[40px]">
-                        Write a review
-                      </button>
-                    </div>
-                    <span className="text-gray-500 mt-[156px]">Sort by</span>
-                  </div>
-
-                  <div>
-                    {reviews.map((review) => (
-                      <div key={review.id} className="mb-4">
-                        <div className="flex items-center mt-2">
-                          <div className="w-[48px] h-[48px] rounded-full bg-[#F0F1FF] flex items-center justify-center">
-                            {review.initials}
-                          </div>
-                          <div className="flex items-center justify-between w-full ml-2">
-                            <h3>{review.name}</h3>
-                            <img
-                              src={review.ratingImage}
-                              alt="Rating"
-                              className="w-[96px] h-[16px]"
-                            />
-                          </div>
-                        </div>
-                        <span className="text-gray-500">{review.date}</span>
-                        <p className="mt-1">{review.reviewText}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <button className="w-[175px] h-[44px] mx-auto rounded border border-[#B6B7BC] mt-[64px]">
-                    Load more reviews
-                  </button>
-                </div>
-              </TabPanel>
-            </TabPanels>
-          </TabGroup>
-        </div>
-      </div>
       <div>
         <div className="flex mx-auto max-w-[1116px]">
           <div>
@@ -508,7 +278,7 @@ const ProductDetail = () => {
       </div>
       <Footer />
     </div>
-  )
+  );
 };
 
 export default ProductDetail;

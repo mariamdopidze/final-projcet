@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Discount from '../components/Discount'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { useNavigate, useParams } from "react-router-dom";
 
 
 const Signup = () => {
@@ -10,6 +11,7 @@ const Signup = () => {
   const [ email, setEmail] = useState('');
   const [ password, setPassword] = useState ('')
   const [loading, setIsLoading] =useState(false)
+  const navigate = useNavigate();
 
   const onSubmitForm = (e)=>{
     e.preventDefault();
@@ -43,10 +45,12 @@ const Signup = () => {
   })
       .then(res=>res.json())
       .then(json=>{console.log(json);
+        navigate("/")
     
     setIsLoading(false);})
 
     .catch(err => {
+    
       console.error(err);
       setIsLoading(false); 
     });
@@ -61,6 +65,7 @@ const Signup = () => {
     setEmail(e.target.value);
   };
   const onPassword = (e) => {
+ 
     setPassword(e.target.value);
   };
   return (
