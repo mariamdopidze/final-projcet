@@ -3,7 +3,6 @@ import Discount from "../components/Discount";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-
 const CartItem = ({ product, quantity, increment, decrement }) => (
   <div className="h-[80px] w-[628px] mt-12 flex items-center justify-between">
     <div className="flex">
@@ -61,11 +60,9 @@ const Cart = () => {
 
       const cart_res = await fetch("https://fakestoreapi.com/carts/5");
       const cart_products = await cart_res.json();
-      const storageCart = await JSON.parse(localStorage.getItem('cartData'))
+      const storageCart = await JSON.parse(localStorage.getItem("cartData"));
 
       let cart_products_data = [];
-    
-      
 
       for (let index = 0; index < cart_products.products.length; index++) {
         const element = cart_products.products[index];
@@ -77,15 +74,20 @@ const Cart = () => {
         });
       }
 
+      let total = 0;
+      for (let i = 0; i < cart_products_data.length; i++) {
+        total += cart_products_data[i].price;
+      }
+      console.log(total);
+      setProducts(cart_products_data);
+
       console.log(storageCart);
-      
 
       if (cart_products_data.length === 0) {
         setProducts(storageCart);
-      }else{
+      } else {
         setProducts(cart_products_data);
       }
-    
     } catch (error) {
       console.log(error);
     } finally {

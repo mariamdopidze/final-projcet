@@ -18,8 +18,7 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const { id } = useParams();
   const [apiData, setApiData] = useState([]);
-  const [detailsData, setDetailsData] = useState({});
-
+  const [detailsData, setDetailsData] = useState([]);
 
   
   const getData = async () => {
@@ -34,7 +33,11 @@ const ProductDetail = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+
+    window.scrollTo({
+      top: 0
+    })
+  }, [id]);
 
   console.log(detailsData);
 

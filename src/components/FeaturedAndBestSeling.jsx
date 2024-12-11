@@ -8,7 +8,6 @@ const FeaturedAndBestSelling = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
- 
   const getData = async () => {
     try {
       const response = await fetch("https://fakestoreapi.com/products");
@@ -25,12 +24,10 @@ const FeaturedAndBestSelling = () => {
     getData();
   }, []);
 
-  
   const onChangeTab = (type) => {
     navigate(`?tab=${type}`);
   };
 
-  
   useEffect(() => {
     const queryParams = new URLSearchParams(search);
     const tab = queryParams.get("tab");
@@ -69,32 +66,31 @@ const FeaturedAndBestSelling = () => {
         ) : (
           <div className="grid grid-cols-4 gap-4 max-w-[1116px] mx-auto mt-14">
             {filteredData.slice(0, 4).map((product) => (
-            
-          <a href={`/product/${product.id}`} key={product.id}>
+              <a href={`/product/${product.id}`} key={product.id}>
                 <div className="text-center">
-                <div className="w-[237px] h-[312px] bg-[#F6F6F6] rounded overflow-hidden relative transition-transform transform hover:scale-105 hover:shadow-lg duration-300 mx-auto flex items-center justify-center">
-                  <img
-                    src={product.image}
-                    className="w-40 h-40 object-contain"
-                    alt={product.title}
-                  />
-                </div>
-                <div>
-                  <p className="font-medium text-sm mt-3">{product.title}</p>
-                  <div className="flex items-center ">
-                    <button className="bg-white w-20 h-7 rounded-full border text-xs font-medium mt-3 text-center">
-                      {product.rating.count === 0
-                        ? "Out of Stock"
-                        : product.rating.count < 5
-                        ? "Low Stock"
-                        : "In Stock"}
-                    </button>
-                    <div className="mt-3 ml-2 font-normal text-sm">
-                      ${product.price.toFixed(2)}
+                  <div className="w-[237px] h-[312px] bg-[#F6F6F6] rounded overflow-hidden relative transition-transform transform hover:scale-105 hover:shadow-lg duration-300 mx-auto flex items-center justify-center">
+                    <img
+                      src={product.image}
+                      className="w-40 h-40 object-contain"
+                      alt={product.title}
+                    />
+                  </div>
+                  <div>
+                    <p className="font-medium text-sm mt-3">{product.title}</p>
+                    <div className="flex items-center ">
+                      <button className="bg-white w-20 h-7 rounded-full border text-xs font-medium mt-3 text-center">
+                        {product.rating.count === 0
+                          ? "Out of Stock"
+                          : product.rating.count < 5
+                          ? "Low Stock"
+                          : "In Stock"}
+                      </button>
+                      <div className="mt-3 ml-2 font-normal text-sm">
+                        ${product.price.toFixed(2)}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
               </a>
             ))}
           </div>

@@ -72,7 +72,6 @@ const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [value, setValue] = useState("");
   const isAuth = Cookies.get("AccessToken");
- 
 
   const toggleDropdown = useCallback(() => {
     setIsDropdownOpen((prev) => !prev);
@@ -88,7 +87,7 @@ const Header = () => {
   };
 
   const icons = [
-    { src: "/images/basket.png", alt: "basket", link: null },
+    { src: "/images/basket.png", alt: "basket", link: "/cart" },
     { src: "/images/User.png", alt: "user", link: "/signup" },
   ];
 
@@ -98,9 +97,6 @@ const Header = () => {
     alert("წარმატებულია");
   };
 
- 
-
- 
   return (
     <header className="h-20 flex items-center justify-between max-w-[1116px] mx-auto">
       <div className="flex items-center gap-2">

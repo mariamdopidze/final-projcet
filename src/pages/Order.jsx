@@ -3,13 +3,13 @@ import Discount from "../components/Discount";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 
 const Order = () => {
   const menu = [
     {
       icon: "Cart.png",
       title: "Order",
-     
     },
     {
       icon: "Heart.png",
@@ -50,13 +50,13 @@ const Order = () => {
 
       <div className="w-full">
         <div className="max-w-[1116px] mx-auto  flex  justify-start">
+          
+
+
           <div className="w-[212px] mt-[120px]">
             {menu.map((item, key) => (
               <Link
-                to={`/wishlist`}
-                className="block my-2 w-full hover:bg-gray-300 rounded-lg transition-all duration-300 text-start px-3"
-               
-
+                to className="block my-2 w-full hover:bg-gray-300 rounded-lg transition-all duration-300 text-start px-3"
               >
                 <img
                   src={`/images/${item.icon}`}
@@ -67,6 +67,8 @@ const Order = () => {
               </Link>
             ))}
           </div>
+
+
 
           <div className="w-[1px] h-[504px] bg-[#E6E7E8] mt-[60px] ml-[36px]"></div>
           <div className="flex flex-col mt-[64px] ml-[48px]">
