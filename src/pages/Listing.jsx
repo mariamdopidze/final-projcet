@@ -130,7 +130,7 @@ const Listing = () => {
                         />
                       </div>
                       <div>
-                        <p className="font-medium text-sm mt-3">
+                        <p className="font-medium text-sm mt-3 overflow-hidden h-[38px]">
                           {product.title}
                         </p>
                         <div className="flex items-center mt-2">

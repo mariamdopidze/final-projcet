@@ -46,6 +46,7 @@ const Resetpassword = () => {
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               className="border border-[#E6E7E8] w-[320px] h-[45px] text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required
             />
           </div>
 
@@ -59,6 +60,7 @@ const Resetpassword = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="border border-[#E6E7E8] w-[320px] h-[45px] text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required
             />
           </div>
 

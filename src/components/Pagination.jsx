@@ -6,12 +6,12 @@ const Pagination = ({totalPosts, postPerPage, setCurrentPage}) => {
     pages.push(index);
   }
 
-  return <div>
+  return <div className="flex flex-row gap-8 items-center mt-10">
 
 {pages.map((page, index) => {
         return (
           <button
-            className="border-2 border-black rounded-md text-black text-center w-6 h-6"
+            className="border-2 border-black rounded-md text-black text-center w-8 h-8  hover:bg-black  hover:text-white transition duration-300 ease-in-out"
             key={index}
             onClick={() => setCurrentPage(page)}
           >

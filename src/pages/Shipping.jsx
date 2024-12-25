@@ -4,34 +4,41 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
-const menu = [
-  {
-    icon: "Cart.png",
-    title: "Order",
-  },
-  {
-    icon: "Heart.png",
-    title: "Wishlist",
-  },
-  {
-    icon: "Vector (2).png",
-    title: "Address",
-  },
-  {
-    icon: "Key.png",
-    title: "Password",
-  },
-  {
-    icon: "User (1).png",
-    title: "Account Detail",
-  },
-  {
-    icon: "Logout.png",
-    title: "Logout",
-  },
-];
+
 
 const Shipping = () => {
+  const menu = [
+    {
+      icon: "Cart.png",
+      title: "Order",
+       path: "/Order"
+    },
+    {
+      icon: "Heart.png",
+      title: "Wishlist",
+      path: "/Wishlist",
+    },
+    {
+      icon: "Vector (2).png",
+      title: "Address",
+      path:"/Shipping",
+    },
+    {
+      icon: "Key.png",
+      title: "Password",
+      path:"/Changepassword",
+    },
+    {
+      icon: "User (1).png",
+      title: "Account Detail",
+      path:"/Account"
+    },
+    {
+      icon: "Logout.png",
+      title: "Logout",
+      path: ""
+    },
+  ];
   return (
     <div>
       <Discount />
@@ -51,7 +58,7 @@ const Shipping = () => {
         <div className="max-w-[1116px] mx-auto  flex  justify-start">
           <div className="w-[212px] mt-[120px]">
             {menu.map((item, key) => (
-              <Link to className="block my-2 w-full hover:bg-gray-300 rounded-lg transition-all duration-300 text-start px-3">
+              <Link  to={item.path} className="block my-2 w-full hover:bg-gray-300 rounded-lg transition-all duration-300 text-start px-3">
                 <img
                   src={`/images/${item.icon}`}
                   className="inline py-3"

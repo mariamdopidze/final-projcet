@@ -24,7 +24,7 @@ const Dropdown = ({ isOpen, toggleDropdown }) => {
     <>
       <button
         onClick={toggleDropdown}
-        className="text-black hover:bg-[#E6E7E8] focus:ring-1 focus:outline-none focus:ring-gray-500 hover:border-2 border-gray-500 rounded-md font-medium text-sm px-5 py-2.5 transition duration-300 flex items-center"
+        className="text-black hover:bg-[#E6E7E8] focus:ring-1 focus:outline-none focus:ring-gray-500 hover:text-blue-500  rounded-md font-medium text-sm px-5 py-2.5 transition duration-300 flex items-center"
         type="button"
       >
         Categories

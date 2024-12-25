@@ -41,7 +41,7 @@ const BestSeling = () => {
                 />
               </div>
               <div className="mt-3">
-                <p className="font-medium text-sm">{product.title}</p>
+                <p className="font-medium text-sm overflow-hidden h-[38px]">{product.title}</p>
                 <div className="mt-2">
                   <button className="bg-white w-20 h-7 rounded-full border text-xs font-medium">
                     {product.rating.count === 0 ? "Out of Stock" : "In Stock"}

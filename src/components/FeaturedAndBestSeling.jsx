@@ -76,16 +76,16 @@ const FeaturedAndBestSelling = () => {
                     />
                   </div>
                   <div>
-                    <p className="font-medium text-sm mt-3">{product.title}</p>
-                    <div className="flex items-center ">
-                      <button className="bg-white w-20 h-7 rounded-full border text-xs font-medium mt-3 text-center">
+                    <p className="font-medium text-sm mt-3 overflow-hidden h-[38px]">{product.title}</p>
+                    <div className=" mt-2">
+                      <button className="bg-white w-20 h-7 rounded-full border text-xs font-medium">
                         {product.rating.count === 0
                           ? "Out of Stock"
                           : product.rating.count < 5
                           ? "Low Stock"
                           : "In Stock"}
                       </button>
-                      <div className="mt-3 ml-2 font-normal text-sm">
+                      <div className="mt-3 ml-2 font-normal text-sm inline-block">
                         ${product.price.toFixed(2)}
                       </div>
                     </div>
