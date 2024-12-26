@@ -217,14 +217,14 @@ const ProductDetail = () => {
                     <div className="flex items-center border rounded-[4px] bg-neutral-100 w-[164px] h-[44px]">
                       <button
                         onClick={decrement}
-                        className="w-8 h-8 text-lg text-black flex items-center justify-center"
+                        className="w-8 h-8 text-lg text-black flex items-center justify-center ml-5"
                       >
                         -
                       </button>
                       <span className="w-full text-center">{quantity}</span>
                       <button
                         onClick={increment}
-                        className="w-8 h-8 text-lg text-black flex items-center justify-center"
+                        className="w-8 h-8 text-lg text-black flex items-center justify-center mr-5"
                       >
                         +
                       </button>

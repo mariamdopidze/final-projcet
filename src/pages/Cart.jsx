@@ -3,7 +3,7 @@ import Discount from "../components/Discount";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-const CartItem = ({ product, quantity, increment, decrement }) => (
+const CartItem = ({ product, quantity, increment, decrement, remove }) => (
   <div className="h-[80px] w-[628px] mt-12 flex items-center justify-between">
     <div className="flex">
       <div className="w-[80px] h-[80px] rounded-[4px] flex justify-center items-center bg-[#F6F6F6]">
@@ -24,7 +24,9 @@ const CartItem = ({ product, quantity, increment, decrement }) => (
     </div>
 
     <div className="flex gap-[18px] items-center">
-      <p className="font-medium text-sm">${product.price.toFixed(2)}</p>
+      <p className="font-medium text-sm">
+        ${(product.price * quantity).toFixed(2)}
+      </p>
       <div className="flex items-center border rounded-[4px] bg-neutral-100 w-[107px] h-[40px]">
         <button
           onClick={decrement}
@@ -40,7 +42,10 @@ const CartItem = ({ product, quantity, increment, decrement }) => (
           +
         </button>
       </div>
-      <div className="bg-[#F6F6F6] w-10 h-10 rounded-[4px] flex justify-center">
+      <div
+        onClick={remove}
+        className="bg-[#F6F6F6] w-10 h-10 rounded-[4px] flex justify-center items-center cursor-pointer"
+      >
         <img src="/images/X.png" alt="Remove" />
       </div>
     </div>
@@ -48,48 +53,28 @@ const CartItem = ({ product, quantity, increment, decrement }) => (
 );
 
 const Cart = () => {
-  const [quantities, setQuantities] = useState([1, 1]);
+  const [quantities, setQuantities] = useState([]);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const getAllProductsAndUserCart = async () => {
     setIsLoading(true);
     try {
-      const products_res = await fetch("https://fakestoreapi.com/products");
-      const products_data = await products_res.json();
+      const productsRes = await fetch("https://fakestoreapi.com/products");
+      const productsData = await productsRes.json();
 
-      const cart_res = await fetch("https://fakestoreapi.com/carts/5");
-      const cart_products = await cart_res.json();
-      const storageCart = await JSON.parse(localStorage.getItem("cartData"));
+      const cartRes = await fetch("https://fakestoreapi.com/carts/5");
+      const cartProducts = await cartRes.json();
 
-      let cart_products_data = [];
+      const cartProductsData = cartProducts.products.map((cartItem) => {
+        const product = productsData.find((p) => p.id === cartItem.productId);
+        return { ...product, quantity: cartItem.quantity };
+      });
 
-      for (let index = 0; index < cart_products.products.length; index++) {
-        const element = cart_products.products[index];
-
-        products_data.find((product) => {
-          if (product.id === element.productId) {
-            cart_products_data.push(product);
-          }
-        });
-      }
-
-      let total = 0;
-      for (let i = 0; i < cart_products_data.length; i++) {
-        total += cart_products_data[i].price;
-      }
-      console.log(total);
-      setProducts(cart_products_data);
-
-      console.log(storageCart);
-
-      if (cart_products_data.length === 0) {
-        setProducts(storageCart);
-      } else {
-        setProducts(cart_products_data);
-      }
+      setProducts(cartProductsData);
+      setQuantities(cartProductsData.map((item) => item.quantity));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
@@ -100,11 +85,28 @@ const Cart = () => {
   }, []);
 
   const increment = (index) => {
-    setQuantities(quantities.map((q, i) => (i === index ? q + 1 : q)));
+    setQuantities((prevQuantities) =>
+      prevQuantities.map((q, i) => (i === index ? q + 1 : q))
+    );
   };
 
   const decrement = (index) => {
-    setQuantities(quantities.map((q, i) => (i === index && q > 1 ? q - 1 : q)));
+    setQuantities((prevQuantities) =>
+      prevQuantities.map((q, i) => (i === index && q > 1 ? q - 1 : q))
+    );
+  };
+
+  const removeItem = (index) => {
+    setProducts((prevProducts) => prevProducts.filter((_, i) => i !== index));
+    setQuantities((prevQuantities) =>
+      prevQuantities.filter((_, i) => i !== index)
+    );
+  };
+
+  const calculateTotal = () => {
+    return products.reduce((total, product, index) => {
+      return total + product.price * quantities[index];
+    }, 0);
   };
 
   return (
@@ -137,6 +139,7 @@ const Cart = () => {
                 quantity={quantities[index]}
                 increment={() => increment(index)}
                 decrement={() => decrement(index)}
+                remove={() => removeItem(index)}
               />
             ))}
           </div>
@@ -152,15 +155,17 @@ const Cart = () => {
                 <span>Tax</span>
               </div>
               <div className="flex flex-col text-[14px] gap-[15px]">
-                <span>$90.00</span>
+                <span>${calculateTotal().toFixed(2)}</span>
                 <span>FREE</span>
-                <span>$3.00</span>
+                <span>${(calculateTotal() * 0.05).toFixed(2)}</span>
               </div>
             </div>
             <div className="w-full bg-[#E6E7E8] h-[1px] mx-auto"></div>
             <div className="flex flex-row justify-between">
               <span>Total</span>
-              <span>$100.00</span>
+              <span>
+                ${(calculateTotal() + calculateTotal() * 0.05).toFixed(2)}
+              </span>
             </div>
             <a href="/checkout">
               <button className="w-full bg-[#0E1422] px-[24px] py-[12px] text-white rounded-[4px]">
